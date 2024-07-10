@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 18:38:00 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/10 19:19:17 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/10 20:08:43 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,14 @@ int	main(int argc, char *argv[])
 		printf("%s\n", nbrs[0]);
 		head_a = make_list(head_a, nbrs);
 		printf("%p\n", head_a);
+		now = head_a;
+		while (now != NULL)
+		{
+			printf("%d\n", now->value);
+			now = now->next;
+		}
+		printf("\n");
+		sa(&head_a);
 		now = head_a;
 		while (now != NULL)
 		{
