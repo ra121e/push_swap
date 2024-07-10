@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 16:30:48 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/10 20:07:32 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/10 21:58:22 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,22 @@
 
 void	sa(t_box **head_a)
 {
-	t_box	*first_box;
-	t_box	*second_box;
+	t_box	*box1;
+	t_box	*box2;
+	t_box	*box3;
+	t_box	*last_box;
 
-	first_box = *head_a;
-	second_box = first_box->next;
-	first_box->next = second_box->next;
-	second_box->next = first_box;
-	*head_a = second_box;
+	box1 = *head_a;
+	box2 = box1->next;
+	box3 = box2->next;
+	last_box = box1->prev;
+	box1->next = box3;
+	box2->next = box1;
+	last_box->next = box2;
+	*head_a = box2;
+	box1->prev = box2;
+	box2->prev = last_box;
+	box3->prev = box1;
 }
 
 void	sb(void)
