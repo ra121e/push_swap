@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 18:38:00 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/08 21:35:08 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/10 10:52:29 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,11 @@
 int	main(int argc, char *argv[])
 {
 	char	**nbrs;
+	t_box	*head;
+	t_box	*now;
 
 	nbrs = NULL;
+	head = NULL;
 	if (argc == 1)
 		return (0);
 	if (argc == 2 && argv[1][0] != '\0')
@@ -38,6 +41,14 @@ int	main(int argc, char *argv[])
 		nbrs = ft_split(argv[1], ' ');
 		printf("%p\n", nbrs);
 		printf("%s\n", nbrs[0]);
+		head = make_list(head, nbrs);
+		printf("%p\n", head);
+		now = head;
+		while (now != NULL)
+		{
+			printf("%d\n", now->value);
+			now = now->next;
+		}
 	}
 
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 18:22:20 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/09 22:10:02 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/10 11:16:23 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,24 +113,81 @@ void	ft_lstadd_front(t_box **lst, t_box *new)
 	*lst = new;
 }
 
+/**
+ * @fn t_list	*ft_lstlast(t_list *lst)
+ * @brief
+ * @param[in]	lst pointer to the first box
+ * @return pointer to the last box
+ * @note lstlast is focusing on Node(Link List Rule)
+	- 1st node is the clue To reach the last node
+	- gives us node address same as lstnew
+*/
+
+t_box	*ft_lstlast(t_box *lst)
+{
+	t_box	*ptr;
+
+	ptr = lst;
+	if (ptr == NULL)
+		return (NULL);
+	while (ptr->next != NULL)
+	{
+		ptr = ptr->next;
+	}
+	return (ptr);
+}
 
 /**
- * @fn t_box	**make_list(t_box **head, char **nbrs)
+ * @fn void	ft_lstadd_back(t_list **lst, t_list *new)
+ * @brief proceed to the tail box and link new box
+ * @param[in]	lst the special pointer storeing the address of the first box
+ * @param[in]	new the new node to be added
+ * @return none
+ * @sa ft_lstlast
+ * @attention *(lst)->next == NULL
+ * @note Why is 1st arge the HEAD pointer by double pointer?
+	in case of no link list, the new will be the first one. HEAD point it
+*/
+
+void	ft_lstadd_back(t_box **lst, t_box *new)
+{
+	t_box	*ptr;
+
+	if (lst == NULL)
+		return ;
+	ptr = ft_lstlast(*lst);
+	if (ptr == NULL)
+	{
+		*lst = new;
+	}
+	else
+	{
+		ptr->next = new;
+	}
+	return ;
+}
+
+/**
+ * @fn t_box	*make_list(t_box *head, char **nbrs)
  * @brief get numbers array and complete link list
+ * @note How to initialize head node
+	- lst functions check list existance by NULL of head node.
+	- **head declare and NULL init hit NULL check in lst handles
+	- *head declare and NULL init means &head itself is not NULL
  */
 
-t_box	**make_list(t_box **head, char **nbrs)
+t_box	*make_list(t_box *head, char **nbrs)
 {
 	int	nbr;
 	t_box	*node;
-	t_box	**head;
 
 	head = NULL;
-	while (nbrs)
+	while (*nbrs)
 	{
-		nbr = atoi(**nbrs);
+		nbr = ft_atoi(*nbrs);
 		node = ft_lstnew(nbr);
-		ft_lstadd_front(head, node);
+		ft_lstadd_back(&head, node);
+		nbrs++;
 	}
 	return (head);
 }
