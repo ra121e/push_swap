@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 18:22:20 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/10 11:16:23 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/10 19:21:16 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,18 +176,18 @@ void	ft_lstadd_back(t_box **lst, t_box *new)
 	- *head declare and NULL init means &head itself is not NULL
  */
 
-t_box	*make_list(t_box *head, char **nbrs)
+t_box	*make_list(t_box *head_a, char **nbrs)
 {
 	int	nbr;
 	t_box	*node;
 
-	head = NULL;
+	head_a = NULL;
 	while (*nbrs)
 	{
 		nbr = ft_atoi(*nbrs);
 		node = ft_lstnew(nbr);
-		ft_lstadd_back(&head, node);
+		ft_lstadd_back(&head_a, node);
 		nbrs++;
 	}
-	return (head);
+	return (head_a);
 }
