@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 15:58:24 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/10 20:02:32 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/10 22:19:26 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,6 @@ t_box	*ft_lstnew(int nbr);
 void	ft_lstadd_front(t_box **lst, t_box *new);
 t_box	*make_list(t_box *head, char **nbrs);
 void	sa(t_box **head_a);
+void	ra(t_box **head_a);
+void	rra(t_box **head_a);
 #endif // PUSH_SWAP_H

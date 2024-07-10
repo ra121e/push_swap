@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 18:38:00 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/10 22:07:14 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/10 22:21:42 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,36 @@ int	main(int argc, char *argv[])
 		}
 		printf("\n");
 		ra(&head_a);
+		now = head_a;
+		if (now != NULL)
+		{
+			i = 1;
+			while (1)
+			{
+				printf("%d: %d @%p next->%p prev->%p\n", i, now->value, now, now->next, now->prev);
+				now = now->next;
+				i++;
+				if (now == head_a)
+					break;
+			}
+		}
+		printf("\n");
+		sa(&head_a);
+		now = head_a;
+		if (now != NULL)
+		{
+			i = 1;
+			while (1)
+			{
+				printf("%d: %d @%p next->%p prev->%p\n", i, now->value, now, now->next, now->prev);
+				now = now->next;
+				i++;
+				if (now == head_a)
+					break;
+			}
+		}
+		printf("\n");
+		rra(&head_a);
 		now = head_a;
 		if (now != NULL)
 		{
