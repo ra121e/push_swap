@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 18:22:20 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/10 19:21:16 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/10 21:40:46 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ t_box	*ft_lstlast(t_box *lst)
 	ptr = lst;
 	if (ptr == NULL)
 		return (NULL);
-	while (ptr->next != NULL)
+	while (ptr->next != NULL && ptr->next != lst)
 	{
 		ptr = ptr->next;
 	}
@@ -152,9 +152,11 @@ t_box	*ft_lstlast(t_box *lst)
 void	ft_lstadd_back(t_box **lst, t_box *new)
 {
 	t_box	*ptr;
+	t_box	*p;
 
 	if (lst == NULL)
 		return ;
+	p = *lst;
 	ptr = ft_lstlast(*lst);
 	if (ptr == NULL)
 	{
@@ -163,6 +165,9 @@ void	ft_lstadd_back(t_box **lst, t_box *new)
 	else
 	{
 		ptr->next = new;
+		new->prev = ptr;
+		new->next = *lst;
+		p->prev = new;
 	}
 	return ;
 }
