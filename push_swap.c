@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 18:38:00 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/12 16:36:28 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/12 16:56:41 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	write_stack(t_box *head_a, t_box *head_b)
 	int		i;
 
 	now = head_a;
-	printf("stack a\n");
+	printf("stack a: %p\n", head_a);
 	if (now != NULL)
 	{
 		i = 1;
@@ -33,13 +33,13 @@ void	write_stack(t_box *head_a, t_box *head_b)
 			printf("%d: %d @%p next->%p prev->%p\n", i, now->value, now, now->next, now->prev);
 			now = now->next;
 			i++;
-			if (now == head_a)
+			if (now == head_a || now == NULL)
 				break;
 		}
 	}
 	printf("\n");
 	now = head_b;
-	printf("stack b\n");
+	printf("stack b: %p\n", head_b);
 	if (now != NULL)
 	{
 		i = 1;
@@ -52,6 +52,7 @@ void	write_stack(t_box *head_a, t_box *head_b)
 				break;
 		}
 	}
+	printf("\n");
 }
 
 /**
@@ -74,38 +75,29 @@ int	main(int argc, char *argv[])
 		return (0);
 	if (argc == 2 && argv[1][0] != '\0')
 	{
-		printf("%s\n", argv[1]);
+		printf("arv[1]: %s\n", argv[1]);
 		nbrs = ft_split(argv[1], ' ');
-		printf("%p\n", nbrs);
-		printf("%s\n", nbrs[0]);
+		printf("array nbrs after ft_split: %p\n", nbrs);
+		printf("first array: %s\n", nbrs[0]);
 		head_a = make_list(head_a, nbrs);
-		printf("%p\n", head_a);
+		printf("address of link list from array: %p\n", head_a);
 		write_stack(head_a, head_b);
-		printf("\n");
 		sa(&head_a);
 		write_stack(head_a, head_b);
-		printf("\n");
 		ra(&head_a);
 		write_stack(head_a, head_b);
-		printf("\n");
 		sa(&head_a);
 		write_stack(head_a, head_b);
-		printf("\n");
 		rra(&head_a);
 		write_stack(head_a, head_b);
-		printf("\n");
 		pa(&head_a, &head_b);
 		write_stack(head_a, head_b);
-		printf("\n");
 		pa(&head_a, &head_b);
 		write_stack(head_a, head_b);
-		printf("\n");
 		pa(&head_a, &head_b);
 		write_stack(head_a, head_b);
-		printf("\n");
 		pa(&head_a, &head_b);
 		write_stack(head_a, head_b);
-		printf("\n");
 		rra(&head_a);
 		write_stack(head_a, head_b);
 	}
