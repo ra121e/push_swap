@@ -6,13 +6,14 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 15:58:24 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/12 13:40:34 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/12 17:13:36 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include <stdlib.h>
+# include <unistd.h>
 
 typedef	struct s_box t_box;
 struct s_box

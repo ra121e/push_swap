@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 16:26:05 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/12 13:02:21 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/12 17:21:05 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@ void	pa(t_box **head_a, t_box **head_b)
 {
 	t_box	*box1;
 
+	write(1, "pa\n", 3);
+	if (*head_a == NULL)
+		return;
 	box1 = ft_lstcut_front(head_a);
 	if (box1 == NULL)
 		return;

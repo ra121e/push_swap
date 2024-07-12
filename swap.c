@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 16:30:48 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/11 13:12:12 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/12 17:15:35 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ void	sa(t_box **head_a)
 	t_box	*box3;
 	t_box	*last_box;
 
+	write(1, "sa\n", 3);
 	box1 = *head_a;
+	if (box1 == NULL || box1->next == NULL)
+		return;
 	box2 = box1->next;
 	if (box2->next == box1)
 	{
