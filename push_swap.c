@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 18:38:00 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/11 22:36:35 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/12 13:05:31 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,37 @@ int	main(int argc, char *argv[])
 				now = now->next;
 				i++;
 				if (now == head_a)
+					break;
+			}
+		}
+		printf("\n");
+		pa(&head_a, &head_b);
+		now = head_a;
+		printf("stack a\n");
+		if (now != NULL)
+		{
+			i = 1;
+			while (1)
+			{
+				printf("%d: %d @%p next->%p prev->%p\n", i, now->value, now, now->next, now->prev);
+				now = now->next;
+				i++;
+				if (now == head_a)
+					break;
+			}
+		}
+		printf("\n");
+		now = head_b;
+		printf("stack b\n");
+		if (now != NULL)
+		{
+			i = 1;
+			while (1)
+			{
+				printf("%d: %d @%p next->%p prev->%p\n", i, now->value, now, now->next, now->prev);
+				now = now->next;
+				i++;
+				if (now == head_b || now == NULL)
 					break;
 			}
 		}

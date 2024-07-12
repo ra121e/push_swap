@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 18:22:20 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/10 21:40:46 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/12 13:02:36 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,6 +172,37 @@ void	ft_lstadd_back(t_box **lst, t_box *new)
 	return ;
 }
 
+t_box	*ft_lstcut_front(t_box **lst)
+{
+	t_box	*box1;
+	t_box	*box2;
+	t_box	*last_box;
+
+	box1 = *lst;
+	if (box1 == NULL)
+		return(NULL);
+	box2 = box1->next;
+	if (box2 == NULL)
+		*lst = NULL;
+	else
+	{
+		last_box = box1->prev;
+		if (last_box == box2)
+		{
+			box2->next = NULL;
+			box2->prev = NULL;
+		}
+		else
+		{
+			box2->prev = last_box;
+			last_box->next = box2;
+		}
+		*lst = box2;
+	}
+	box1->next = NULL;
+	box1->prev = NULL;
+	return (box1);
+}
 /**
  * @fn t_box	*make_list(t_box *head, char **nbrs)
  * @brief get numbers array and complete link list
