@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 18:38:00 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/12 16:56:41 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/12 18:00:34 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	write_stack(t_box *head_a, t_box *head_b)
 		i = 1;
 		while (1)
 		{
-			printf("%d: %d @%p next->%p prev->%p\n", i, now->value, now, now->next, now->prev);
+			printf("%d: %d %p next->%p prev->%p\n", i, now->value, now, now->next, now->prev);
 			now = now->next;
 			i++;
 			if (now == head_a || now == NULL)
@@ -45,7 +45,7 @@ void	write_stack(t_box *head_a, t_box *head_b)
 		i = 1;
 		while (1)
 		{
-			printf("%d: %d @%p next->%p prev->%p\n", i, now->value, now, now->next, now->prev);
+			printf("%d: %d %p next->%p prev->%p\n", i, now->value, now, now->next, now->prev);
 			now = now->next;
 			i++;
 			if (now == head_b || now == NULL)
@@ -80,7 +80,7 @@ int	main(int argc, char *argv[])
 		printf("array nbrs after ft_split: %p\n", nbrs);
 		printf("first array: %s\n", nbrs[0]);
 		head_a = make_list(head_a, nbrs);
-		printf("address of link list from array: %p\n", head_a);
+		printf("address of link list from array: %p\n\n", head_a);
 		write_stack(head_a, head_b);
 		sa(&head_a);
 		write_stack(head_a, head_b);
@@ -99,6 +99,14 @@ int	main(int argc, char *argv[])
 		pa(&head_a, &head_b);
 		write_stack(head_a, head_b);
 		rra(&head_a);
+		write_stack(head_a, head_b);
+		rb(&head_b);
+		write_stack(head_a, head_b);
+		sb(&head_b);
+		write_stack(head_a, head_b);
+		pb(&head_b, &head_a);
+		write_stack(head_a, head_b);
+		rrb(&head_b);
 		write_stack(head_a, head_b);
 	}
 

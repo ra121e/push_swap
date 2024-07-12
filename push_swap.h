@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 15:58:24 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/12 17:13:36 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/12 18:06:08 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,14 @@ void	ft_lstadd_front(t_box **lst, t_box *new);
 t_box	*ft_lstcut_front(t_box **lst);
 t_box	*make_list(t_box *head, char **nbrs);
 void	sa(t_box **head_a);
+void	sb(t_box **head_b);
+void	ss(t_box **head_a, t_box **head_b);
 void	ra(t_box **head_a);
+void	rb(t_box **head_b);
+void	rr(t_box **head_a, t_box **head_b);
 void	rra(t_box **head_a);
+void	rrb(t_box **head_b);
+void	rrr(t_box **head_a, t_box **head_b);
 void	pa(t_box **head_a, t_box **head_b);
+void	pb(t_box **head_a, t_box **head_b);
 #endif // PUSH_SWAP_H
