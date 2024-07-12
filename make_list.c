@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 18:22:20 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/12 13:21:56 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/12 13:37:05 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,9 @@ t_box	*ft_lstnew(int nbr)
 
 void	ft_lstadd_front(t_box **lst, t_box *new)
 {
+	t_box	*ptr;
+
+	ptr = ft_lstlast(*lst);
 	if (lst == NULL || new == NULL)
 		return ;
 	if (*lst == NULL)
@@ -114,9 +117,9 @@ void	ft_lstadd_front(t_box **lst, t_box *new)
 	else
 	{
 		new->next = *lst;
-		new->prev = *lst;
-		(*lst)->next = new;
+		new->prev = ptr;
 		(*lst)->prev = new;
+		ptr->next = new;
 		*lst = new;
 	}
 }
