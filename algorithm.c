@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 20:52:11 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/13 10:28:58 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/13 11:19:56 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	three_case(t_box **head_a)
 	}
 }
 
-void	find_target(t_box **head_a, t_box **head_b, int *max, int *min, t_box **target)
+void	find_target_b(t_box **head_a, t_box **head_b, int *max, int *min, t_box **target)
 {
 	t_box	*now;
 	int		def;
@@ -93,6 +93,36 @@ void	find_target(t_box **head_a, t_box **head_b, int *max, int *min, t_box **tar
 	}
 }
 
+void	find_target_a(t_box **head_a, t_box **head_b, int *max, int *min, t_box **target)
+{
+	t_box	*now;
+	int		def;
+
+	if (*head_b == NULL || (*head_b)->next == NULL)
+		pa(head_a, head_b);
+	else
+	{
+		now = *head_b;
+		*max = (*head_a)->value;
+		*min = (*head_a)->value;
+		def	= 2147483647;
+		while (1)
+		{
+			if (now->value > *max)
+				*max = now->value;
+			if (now->value < *min)
+				*min = now->value;
+			if (now->value > (*head_a)->value && now->value - (*head_a)->value < def)
+			{
+				def = now->value - (*head_a)->value;
+				*target = now;
+			}
+			now = now->next;
+			if (now == *head_b)
+				break;
+		}
+	}
+}
 void	turk_algo(t_box **head_a, t_box **head_b)
 {
 	t_box	*box1;
@@ -138,7 +168,7 @@ void	turk_algo(t_box **head_a, t_box **head_b)
 		}
 		else
 		{
-			find_target(head_a, head_b, &max, &min, &target);
+			find_target_b(head_a, head_b, &max, &min, &target);
 			if ((*head_a)->value == max || (*head_a)->value == min)
 			{
 				pa(head_a, head_b);
@@ -151,22 +181,28 @@ void	turk_algo(t_box **head_a, t_box **head_b)
 			}
 			else
 			{
-				while (target == *head_b)
+				while (target != *head_b)
 				{
 					rb(head_b);
 					write_stack(*head_a, *head_b);
 				}
 				pa(head_a, head_b);
 				write_stack(*head_a, *head_b);
+				while ((*head_b)->value != max)
+				{
+					rrb(head_b);
+					write_stack(*head_a, *head_b);
+				}
 			}
 		}
 	}
 	three_case(head_a);
+	rra(head_a);
 	write_stack(*head_a, *head_b);
-	while (*head_b == NULL)
+	while (*head_b != NULL)
 	{
-		find_target(head_b, head_a, &max, &min, &target);
-		while (target == *head_a)
+		find_target_a(head_b, head_a, &max, &min, &target);
+		while (target != *head_a)
 		{
 			ra(head_a);
 			write_stack(*head_a, *head_b);
