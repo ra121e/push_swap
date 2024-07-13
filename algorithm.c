@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 20:52:11 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/13 13:03:50 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/13 15:51:26 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,18 +62,18 @@ void	three_case(t_box **head_a)
 	}
 }
 
-void	find_target_b(t_box **head_a, t_box **head_b, int *max, int *min, t_box **target)
+void	find_target_b(t_box **head_from, t_box **head_to, int *max, int *min, t_box **target)
 {
 	t_box	*now;
 	int		def;
 
-	if (*head_b == NULL || (*head_b)->next == NULL)
-		pa(head_a, head_b);
+	if (*head_to == NULL || (*head_to)->next == NULL)
+		pa(head_from, head_to);
 	else
 	{
-		now = *head_b;
-		*max = (*head_a)->value;
-		*min = (*head_a)->value;
+		now = *head_to;
+		*max = (*head_from)->value;
+		*min = (*head_from)->value;
 		def	= 2147483647;
 		while (1)
 		{
@@ -81,30 +81,30 @@ void	find_target_b(t_box **head_a, t_box **head_b, int *max, int *min, t_box **t
 				*max = now->value;
 			if (now->value < *min)
 				*min = now->value;
-			if (now->value < (*head_a)->value && ((*head_a)->value - now->value) < def)
+			if (now->value < (*head_from)->value && ((*head_from)->value - now->value) < def)
 			{
-				def = (*head_a)->value - now->value;
+				def = (*head_from)->value - now->value;
 				*target = now;
 			}
 			now = now->next;
-			if (now == *head_b)
+			if (now == *head_to)
 				break;
 		}
 	}
 }
 
-void	find_target_a(t_box **head_a, t_box **head_b, int *max, int *min, t_box **target)
+void	find_target_a(t_box **head_from, t_box **head_to, int *max, int *min, t_box **target)
 {
 	t_box	*now;
 	int		def;
 
-	if (*head_b == NULL || (*head_b)->next == NULL)
-		pa(head_a, head_b);
+	if (*head_to == NULL || (*head_to)->next == NULL)
+		pa(head_from, head_to);
 	else
 	{
-		now = *head_b;
-		*max = (*head_a)->value;
-		*min = (*head_a)->value;
+		now = *head_to;
+		*max = (*head_from)->value;
+		*min = (*head_from)->value;
 		def	= 2147483647;
 		*target = NULL;
 		while (1)
@@ -113,13 +113,13 @@ void	find_target_a(t_box **head_a, t_box **head_b, int *max, int *min, t_box **t
 				*max = now->value;
 			if (now->value < *min)
 				*min = now->value;
-			if (now->value > (*head_a)->value && now->value - (*head_a)->value < def)
+			if (now->value > (*head_from)->value && now->value - (*head_from)->value < def)
 			{
-				def = now->value - (*head_a)->value;
+				def = now->value - (*head_from)->value;
 				*target = now;
 			}
 			now = now->next;
-			if (now == *head_b)
+			if (now == *head_to)
 				break;
 		}
 	}
