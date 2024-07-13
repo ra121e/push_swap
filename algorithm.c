@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 20:52:11 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/13 16:42:16 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/13 17:09:09 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,31 +138,16 @@ void	find_target_a(t_box **head_from, t_box **head_to, int *max, int *min, t_box
 		}
 	}
 }
-void	turk_algo(t_box **head_a, t_box **head_b)
+
+
+void	push_forward(t_box **head_a, t_box **head_b)
 {
-	t_box	*box1;
-	t_box	*box2;
 	t_box	*last_box;
-	t_box	*target;
 	int		max;
 	int		min;
+	t_box	*target;
 
-	box1 = *head_a;
-	box2 = box1->next;
-	last_box = box1->prev;
-
-	if (*head_a == NULL || box2 == NULL)
-		return;
-	if (box2->next == box1)
-	{
-		two_case(head_a);
-		return;
-	}
-	else if (box2->next == last_box)
-	{
-		three_case(head_a);
-		return;
-	}
+	last_box = (*head_a)->prev;
 	while ((last_box->prev)->prev != *head_a)
 	{
 		if (*head_b == NULL || (*head_b)->next == NULL)
@@ -205,8 +190,14 @@ void	turk_algo(t_box **head_a, t_box **head_b)
 			}
 		}
 	}
-	three_case(head_a);
-	write_stack(*head_a, *head_b);
+}
+
+void	push_back(t_box **head_a, t_box **head_b)
+{
+	int		max;
+	int		min;
+	t_box	*target;
+
 	while (*head_b != NULL)
 	{
 		find_target_a(head_b, head_a, &max, &min, &target);
@@ -236,4 +227,32 @@ void	turk_algo(t_box **head_a, t_box **head_b)
 			}
 		}
 	}
+}
+
+void	turk_algo(t_box **head_a, t_box **head_b)
+{
+	t_box	*box1;
+	t_box	*box2;
+	t_box	*last_box;
+
+	box1 = *head_a;
+	box2 = box1->next;
+	last_box = box1->prev;
+
+	if (*head_a == NULL || box2 == NULL)
+		return;
+	if (box2->next == box1)
+	{
+		two_case(head_a);
+		return;
+	}
+	else if (box2->next == last_box)
+	{
+		three_case(head_a);
+		return;
+	}
+	push_forward(head_a, head_b);
+	three_case(head_a);
+	write_stack(*head_a, *head_b);
+	push_back(head_a, head_b);
 }
