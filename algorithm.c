@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 20:52:11 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/13 17:09:09 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/13 17:46:48 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,12 +153,8 @@ void	push_forward(t_box **head_a, t_box **head_b)
 		if (*head_b == NULL || (*head_b)->next == NULL)
 		{
 			pa(head_a, head_b);
-			write_stack(*head_a, *head_b);
 			if ((*head_b)->next != NULL && (*head_b)->value < ((*head_b)->next)->value)
-			{
 				sb(head_b);
-				write_stack(*head_a, *head_b);
-			}
 		}
 		else
 		{
@@ -166,27 +162,16 @@ void	push_forward(t_box **head_a, t_box **head_b)
 			if ((*head_a)->value == max || (*head_a)->value == min)
 			{
 				pa(head_a, head_b);
-				write_stack(*head_a, *head_b);
 				if ((*head_b)->value == min)
-				{
 					rb(head_b);
-					write_stack(*head_a, *head_b);
-				}
 			}
 			else
 			{
 				while (target != *head_b)
-				{
 					rb(head_b);
-					write_stack(*head_a, *head_b);
-				}
 				pa(head_a, head_b);
-				write_stack(*head_a, *head_b);
 				while ((*head_b)->value != max)
-				{
 					rrb(head_b);
-					write_stack(*head_a, *head_b);
-				}
 			}
 		}
 	}
@@ -204,27 +189,16 @@ void	push_back(t_box **head_a, t_box **head_b)
 		if ((*head_b)->value == max || (*head_b)->value == min)
 		{
 			pb(head_b, head_a);
-			write_stack(*head_a, *head_b);
 			if ((*head_a)->value == max)
-			{
 				ra(head_a);
-				write_stack(*head_a, *head_b);
-			}
 		}
 		else
 		{
 			while (target != *head_a)
-			{
 				ra(head_a);
-				write_stack(*head_a, *head_b);
-			}
 			pb(head_b, head_a);
-			write_stack(*head_a, *head_b);
 			while ((*head_a)->value != min)
-			{
 				rra(head_a);
-				write_stack(*head_a, *head_b);
-			}
 		}
 	}
 }
@@ -253,6 +227,5 @@ void	turk_algo(t_box **head_a, t_box **head_b)
 	}
 	push_forward(head_a, head_b);
 	three_case(head_a);
-	write_stack(*head_a, *head_b);
 	push_back(head_a, head_b);
 }
