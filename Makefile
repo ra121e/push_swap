@@ -6,7 +6,7 @@
 #    By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/08 15:54:11 by athonda           #+#    #+#              #
-#    Updated: 2024/07/12 17:39:09 by athonda          ###   ########.fr        #
+#    Updated: 2024/07/13 00:29:30 by athonda          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ NAME	=	libpushswap.a
 CFLAGS	=	-Wall -Wextra -Werror -g3 -O0
 
 SRCS	=	ft_split.c ft_utils.c make_list.c \
-			op_swap.c op_rotate.c op_rev_rotate.c op_push.c
+			op_swap.c op_rotate.c op_rev_rotate.c op_push.c \
+			algorithm.c
 
 MAIN	=	push_swap.c
 

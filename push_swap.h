@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 15:58:24 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/12 18:06:08 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/13 09:00:46 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,8 @@ void	rrb(t_box **head_b);
 void	rrr(t_box **head_a, t_box **head_b);
 void	pa(t_box **head_a, t_box **head_b);
 void	pb(t_box **head_a, t_box **head_b);
+void	turk_algo(t_box **head_a, t_box **head_b);
+void	find_target(t_box **head_a, t_box **head_b, int *max, int *min, t_box **target);
+void	three_case(t_box **head_a);
+void	write_stack(t_box *head_a, t_box *head_b);
 #endif // PUSH_SWAP_H

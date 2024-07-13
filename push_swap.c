@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 18:38:00 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/12 18:00:34 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/13 00:45:38 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,31 +82,7 @@ int	main(int argc, char *argv[])
 		head_a = make_list(head_a, nbrs);
 		printf("address of link list from array: %p\n\n", head_a);
 		write_stack(head_a, head_b);
-		sa(&head_a);
-		write_stack(head_a, head_b);
-		ra(&head_a);
-		write_stack(head_a, head_b);
-		sa(&head_a);
-		write_stack(head_a, head_b);
-		rra(&head_a);
-		write_stack(head_a, head_b);
-		pa(&head_a, &head_b);
-		write_stack(head_a, head_b);
-		pa(&head_a, &head_b);
-		write_stack(head_a, head_b);
-		pa(&head_a, &head_b);
-		write_stack(head_a, head_b);
-		pa(&head_a, &head_b);
-		write_stack(head_a, head_b);
-		rra(&head_a);
-		write_stack(head_a, head_b);
-		rb(&head_b);
-		write_stack(head_a, head_b);
-		sb(&head_b);
-		write_stack(head_a, head_b);
-		pb(&head_b, &head_a);
-		write_stack(head_a, head_b);
-		rrb(&head_b);
+		turk_algo(&head_a, &head_b);
 		write_stack(head_a, head_b);
 	}
 
