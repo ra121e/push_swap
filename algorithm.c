@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 20:52:11 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/13 11:19:56 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/13 13:03:50 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ void	find_target_a(t_box **head_a, t_box **head_b, int *max, int *min, t_box **t
 		*max = (*head_a)->value;
 		*min = (*head_a)->value;
 		def	= 2147483647;
+		*target = NULL;
 		while (1)
 		{
 			if (now->value > *max)
@@ -197,17 +198,34 @@ void	turk_algo(t_box **head_a, t_box **head_b)
 		}
 	}
 	three_case(head_a);
-	rra(head_a);
 	write_stack(*head_a, *head_b);
 	while (*head_b != NULL)
 	{
 		find_target_a(head_b, head_a, &max, &min, &target);
-		while (target != *head_a)
+		if ((*head_b)->value == max || (*head_b)->value == min)
 		{
-			ra(head_a);
+			pb(head_b, head_a);
 			write_stack(*head_a, *head_b);
+			if ((*head_a)->value == max)
+			{
+				ra(head_a);
+				write_stack(*head_a, *head_b);
+			}
 		}
-		pb(head_b, head_a);
-		write_stack(*head_a, *head_b);
+		else
+		{
+			while (target != *head_a)
+			{
+				ra(head_a);
+				write_stack(*head_a, *head_b);
+			}
+			pb(head_b, head_a);
+			write_stack(*head_a, *head_b);
+			while ((*head_a)->value != min)
+			{
+				rra(head_a);
+				write_stack(*head_a, *head_b);
+			}
+		}
 	}
 }
