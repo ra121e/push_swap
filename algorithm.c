@@ -6,12 +6,39 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 20:52:11 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/13 16:08:51 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/13 16:42:16 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/**
+ * @fn void	two_case(t_box **head_a)
+ * @brief 2 node in stack a
+ * @param[in] head_a is stack a link list
+ */
+
+void	two_case(t_box **head_a)
+{
+	t_box	*box1;
+	t_box	*box2;
+
+	box1 = *head_a;
+	box2 = box1->next;
+	if (box2->value < box1->value)
+	{
+		sa(head_a);
+	}
+	return;
+}
+
+/**
+ * @fn void	three_case(t_box **head_a)
+ * @brief sort 3 numbers
+ * @param[in] head address of linked list
+ * @return no
+ * @note readable or norm
+ */
 
 void	three_case(t_box **head_a)
 {
@@ -128,18 +155,12 @@ void	turk_algo(t_box **head_a, t_box **head_b)
 		return;
 	if (box2->next == box1)
 	{
-		if (box2->value < box1->value)
-		{
-			sa(head_a);
-			write_stack(*head_a, *head_b);
-			return;
-		}
+		two_case(head_a);
 		return;
 	}
-	if (box2->next == last_box)
+	else if (box2->next == last_box)
 	{
 		three_case(head_a);
-		write_stack(*head_a, *head_b);
 		return;
 	}
 	while ((last_box->prev)->prev != *head_a)
