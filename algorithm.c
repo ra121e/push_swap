@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 20:52:11 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/13 17:46:48 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/14 12:40:26 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,20 +159,17 @@ void	push_forward(t_box **head_a, t_box **head_b)
 		else
 		{
 			find_target_b(head_a, head_b, &max, &min, &target);
-			if ((*head_a)->value == max || (*head_a)->value == min)
+			if ((*head_a)->value == min)
 			{
-				pa(head_a, head_b);
-				if ((*head_b)->value == min)
+				while ((*head_b)->value != max)
 					rb(head_b);
 			}
 			else
 			{
 				while (target != *head_b)
 					rb(head_b);
-				pa(head_a, head_b);
-				while ((*head_b)->value != max)
-					rrb(head_b);
 			}
+			pa(head_a, head_b);
 		}
 	}
 }
