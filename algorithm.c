@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 20:52:11 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/14 12:40:26 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/14 15:06:43 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	find_target_b(t_box **head_from, t_box **head_to, int *max, int *min, t_box
 {
 	t_box	*now;
 	int		def;
+	t_box	*max_node;
 
 	if (*head_to == NULL || (*head_to)->next == NULL)
 		pa(head_from, head_to);
@@ -92,7 +93,10 @@ void	find_target_b(t_box **head_from, t_box **head_to, int *max, int *min, t_box
 		while (1)
 		{
 			if (now->value > *max)
+			{
 				*max = now->value;
+				max_node = now;
+			}
 			if (now->value < *min)
 				*min = now->value;
 			if (now->value < (*head_from)->value && ((*head_from)->value - now->value) < def)
@@ -102,7 +106,11 @@ void	find_target_b(t_box **head_from, t_box **head_to, int *max, int *min, t_box
 			}
 			now = now->next;
 			if (now == *head_to)
+			{
+				if (*target == NULL)
+					*target = max_node;
 				break;
+			}
 		}
 	}
 }
@@ -139,6 +147,30 @@ void	find_target_a(t_box **head_from, t_box **head_to, int *max, int *min, t_box
 	}
 }
 
+int	calc_cost(t_box **head, t_box *node, int *prevcost, int *nextcost)
+{
+	int		cost;
+	t_box	*now;
+
+	now = node;
+	*prevcost = 0;
+	*nextcost = 0;
+	while (now != *head)
+	{
+		(*prevcost)++;
+		now = now->prev;
+	}
+	cost = *prevcost;
+	now = node;
+	while (now != *head)
+	{
+		(*nextcost)++;
+		now = now->next;
+	}
+	if (cost > *nextcost)
+		cost = *nextcost;
+	return (cost);
+}
 
 void	push_forward(t_box **head_a, t_box **head_b)
 {
@@ -146,6 +178,8 @@ void	push_forward(t_box **head_a, t_box **head_b)
 	int		max;
 	int		min;
 	t_box	*target;
+	int		prevcost;
+	int		nextcost;
 
 	last_box = (*head_a)->prev;
 	while ((last_box->prev)->prev != *head_a)
@@ -158,7 +192,9 @@ void	push_forward(t_box **head_a, t_box **head_b)
 		}
 		else
 		{
+			target = NULL;
 			find_target_b(head_a, head_b, &max, &min, &target);
+			calc_cost(head_b, target, &prevcost, &nextcost);
 			if ((*head_a)->value == min)
 			{
 				while ((*head_b)->value != max)
@@ -167,7 +203,12 @@ void	push_forward(t_box **head_a, t_box **head_b)
 			else
 			{
 				while (target != *head_b)
-					rb(head_b);
+				{
+					if (prevcost < nextcost)
+						rb(head_b);
+					else
+						rrb(head_b);
+				}
 			}
 			pa(head_a, head_b);
 		}
