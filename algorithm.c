@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 20:52:11 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/15 22:43:11 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/16 00:32:41 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,24 +42,19 @@ void	two_case(t_box **head_a)
 
 void	three_case(t_box **head_a)
 {
-	t_box	*box1;
-	t_box	*box2;
-	t_box	*last_box;
-
-	box1 = *head_a;
-	box2 = box1->next;
-	last_box = box1->prev;
-	if (box1->value < box2->value && box1->value < last_box->value)
+	if ((*head_a)->value < ((*head_a)->next)->value &&
+		(*head_a)->value < ((*head_a)->prev)->value)
 	{
-		if (box2->value > last_box->value)
+		if (((*head_a)->next)->value > ((*head_a)->prev)->value)
 		{
 			sa(head_a);
 			ra(head_a);
 		}
 	}
-	else if(box1->value > box2->value && box1->value > last_box->value)
+	else if((*head_a)->value > ((*head_a)->next)->value &&
+			(*head_a)->value > ((*head_a)->prev)->value)
 	{
-		if (box2->value < last_box->value)
+		if (((*head_a)->next)->value < ((*head_a)->prev)->value)
 			ra(head_a);
 		else
 		{
@@ -69,7 +64,7 @@ void	three_case(t_box **head_a)
 	}
 	else
 	{
-		if (box2->value < last_box->value)
+		if (((*head_a)->next)->value < ((*head_a)->prev)->value)
 			sa(head_a);
 		else
 			rra(head_a);
