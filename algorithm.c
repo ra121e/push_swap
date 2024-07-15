@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 20:52:11 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/15 09:54:28 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/15 10:03:46 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,35 +84,30 @@ void	find_target_b(t_box **head_from, t_box **head_to, t_box **target)
 	int		min;
 	t_box	*max_node;
 
-	if (*head_to == NULL || (*head_to)->next == NULL)
-		pa(head_from, head_to);
-	else
+	now = *head_to;
+	max = (*head_from)->value;
+	min = (*head_from)->value;
+	def	= 2147483647;
+	while (1)
 	{
-		now = *head_to;
-		max = (*head_from)->value;
-		min = (*head_from)->value;
-		def	= 2147483647;
-		while (1)
+		if (now->value > max)
 		{
-			if (now->value > max)
-			{
-				max = now->value;
-				max_node = now;
-			}
-			if (now->value < min)
-				min = now->value;
-			if (now->value < (*head_from)->value && ((*head_from)->value - now->value) < def)
-			{
-				def = (*head_from)->value - now->value;
-				*target = now;
-			}
-			now = now->next;
-			if (now == *head_to)
-			{
-				if (*target == NULL)
-					*target = max_node;
-				break;
-			}
+			max = now->value;
+			max_node = now;
+		}
+		if (now->value < min)
+			min = now->value;
+		if (now->value < (*head_from)->value && ((*head_from)->value - now->value) < def)
+		{
+			def = (*head_from)->value - now->value;
+			*target = now;
+		}
+		now = now->next;
+		if (now == *head_to)
+		{
+			if (*target == NULL)
+				*target = max_node;
+			break;
 		}
 	}
 }
@@ -125,36 +120,31 @@ void	find_target_a(t_box **head_from, t_box **head_to, t_box **target)
 	int		min;
 	t_box	*min_node;
 
-	if (*head_to == NULL || (*head_to)->next == NULL)
-		pa(head_from, head_to);
-	else
+	now = *head_to;
+	max = (*head_from)->value;
+	min = (*head_from)->value;
+	def	= 2147483647;
+	*target = NULL;
+	while (1)
 	{
-		now = *head_to;
-		max = (*head_from)->value;
-		min = (*head_from)->value;
-		def	= 2147483647;
-		*target = NULL;
-		while (1)
+		if (now->value > max)
+			max = now->value;
+		if (now->value < min)
 		{
-			if (now->value > max)
-				max = now->value;
-			if (now->value < min)
-			{
-				min = now->value;
-				min_node = now;
-			}
-			if (now->value > (*head_from)->value && now->value - (*head_from)->value < def)
-			{
-				def = now->value - (*head_from)->value;
-				*target = now;
-			}
-			now = now->next;
-			if (now == *head_to)
-			{
-				if (*target == NULL)
-					*target = min_node;
-				break;
-			}
+			min = now->value;
+			min_node = now;
+		}
+		if (now->value > (*head_from)->value && now->value - (*head_from)->value < def)
+		{
+			def = now->value - (*head_from)->value;
+			*target = now;
+		}
+		now = now->next;
+		if (now == *head_to)
+		{
+			if (*target == NULL)
+				*target = min_node;
+			break;
 		}
 	}
 }
