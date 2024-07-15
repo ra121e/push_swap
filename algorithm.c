@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 20:52:11 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/15 10:03:46 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/15 10:16:38 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	three_case(t_box **head_a)
 	}
 }
 
-void	find_target_b(t_box **head_from, t_box **head_to, t_box **target)
+void	find_target_largest_smaller(t_box **head_from, t_box **head_to, t_box **target)
 {
 	t_box	*now;
 	int		def;
@@ -112,7 +112,7 @@ void	find_target_b(t_box **head_from, t_box **head_to, t_box **target)
 	}
 }
 
-void	find_target_a(t_box **head_from, t_box **head_to, t_box **target)
+void	find_target_smallest_larger(t_box **head_from, t_box **head_to, t_box **target)
 {
 	t_box	*now;
 	int		def;
@@ -193,7 +193,7 @@ void	push_forward(t_box **head_a, t_box **head_b)
 		else
 		{
 			target = NULL;
-			find_target_b(head_a, head_b, &target);
+			find_target_largest_smaller(head_a, head_b, &target);
 			calc_cost(head_b, target, &prevcost, &nextcost);
 			while (target != *head_b)
 			{
@@ -215,7 +215,7 @@ void	push_back(t_box **head_a, t_box **head_b)
 
 	while (*head_b != NULL)
 	{
-		find_target_a(head_b, head_a, &target);
+		find_target_smallest_larger(head_b, head_a, &target);
 		calc_cost(head_a, target, &prevcost, &nextcost);
 		while (target != *head_a)
 		{
