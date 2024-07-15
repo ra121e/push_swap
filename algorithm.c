@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 20:52:11 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/15 09:06:25 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/15 09:54:28 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,26 +117,32 @@ void	find_target_b(t_box **head_from, t_box **head_to, t_box **target)
 	}
 }
 
-void	find_target_a(t_box **head_from, t_box **head_to, int *max, int *min, t_box **target)
+void	find_target_a(t_box **head_from, t_box **head_to, t_box **target)
 {
 	t_box	*now;
 	int		def;
+	int		max;
+	int		min;
+	t_box	*min_node;
 
 	if (*head_to == NULL || (*head_to)->next == NULL)
 		pa(head_from, head_to);
 	else
 	{
 		now = *head_to;
-		*max = (*head_from)->value;
-		*min = (*head_from)->value;
+		max = (*head_from)->value;
+		min = (*head_from)->value;
 		def	= 2147483647;
 		*target = NULL;
 		while (1)
 		{
-			if (now->value > *max)
-				*max = now->value;
-			if (now->value < *min)
-				*min = now->value;
+			if (now->value > max)
+				max = now->value;
+			if (now->value < min)
+			{
+				min = now->value;
+				min_node = now;
+			}
 			if (now->value > (*head_from)->value && now->value - (*head_from)->value < def)
 			{
 				def = now->value - (*head_from)->value;
@@ -144,7 +150,11 @@ void	find_target_a(t_box **head_from, t_box **head_to, int *max, int *min, t_box
 			}
 			now = now->next;
 			if (now == *head_to)
+			{
+				if (*target == NULL)
+					*target = min_node;
 				break;
+			}
 		}
 	}
 }
@@ -209,27 +219,22 @@ void	push_forward(t_box **head_a, t_box **head_b)
 
 void	push_back(t_box **head_a, t_box **head_b)
 {
-	int		max;
-	int		min;
+	int		prevcost;
+	int		nextcost;
 	t_box	*target;
 
 	while (*head_b != NULL)
 	{
-		find_target_a(head_b, head_a, &max, &min, &target);
-		if ((*head_b)->value == max || (*head_b)->value == min)
+		find_target_a(head_b, head_a, &target);
+		calc_cost(head_a, target, &prevcost, &nextcost);
+		while (target != *head_a)
 		{
-			pb(head_b, head_a);
-			if ((*head_a)->value == max)
-				ra(head_a);
+			if (prevcost < nextcost)
+				rb(head_a);
+			else
+				rrb(head_a);
 		}
-		else
-		{
-			while (target != *head_a)
-				ra(head_a);
-			pb(head_b, head_a);
-			while ((*head_a)->value != min)
-				rra(head_a);
-		}
+		pb(head_b, head_a);
 	}
 }
 
