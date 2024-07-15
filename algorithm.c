@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 20:52:11 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/15 18:01:40 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/15 19:38:42 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,7 @@ void	push_forward(t_box **head_a, t_box **head_b)
 {
 	t_box	*last_box;
 	t_box	*target;
+	t_box	*base;
 	int		prevcost;
 	int		nextcost;
 
@@ -171,8 +172,8 @@ void	push_forward(t_box **head_a, t_box **head_b)
 		else
 		{
 			target = NULL;
-			//find_base(head_a, head_b);
-			target = find_target_largest_smaller(*head_a, head_b);
+			base = find_base(head_a, head_b);
+			target = find_target_largest_smaller(base, head_b);
 			calc_cost(head_b, target, &prevcost, &nextcost);
 			while (target != *head_b)
 			{
@@ -181,7 +182,16 @@ void	push_forward(t_box **head_a, t_box **head_b)
 				else
 					rrb(head_b);
 			}
+			calc_cost(head_a, base, &prevcost, &nextcost);
+			while (base != *head_a)
+			{
+				if (prevcost < nextcost)
+					ra(head_a);
+				else
+					rra(head_a);
+			}
 			pa(head_a, head_b);
+			last_box = (*head_a)->prev;
 		}
 	}
 }
