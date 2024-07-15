@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 20:52:11 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/15 10:57:23 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/15 14:14:16 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	three_case(t_box **head_a)
 	}
 }
 
-void	find_target_largest_smaller(t_box **head_from, t_box **head_to, t_box **target)
+void	find_target_largest_smaller(t_box *node, t_box **head_to, t_box **target)
 {
 	t_box	*now;
 	int		def;
@@ -85,8 +85,8 @@ void	find_target_largest_smaller(t_box **head_from, t_box **head_to, t_box **tar
 	t_box	*max_node;
 
 	now = *head_to;
-	max = (*head_from)->value;
-	min = (*head_from)->value;
+	max = node->value;
+	min = node->value;
 	def	= 2147483647;
 	while (1)
 	{
@@ -97,9 +97,9 @@ void	find_target_largest_smaller(t_box **head_from, t_box **head_to, t_box **tar
 		}
 		if (now->value < min)
 			min = now->value;
-		if (now->value < (*head_from)->value && ((*head_from)->value - now->value) < def)
+		if (now->value < node->value && (node->value - now->value) < def)
 		{
-			def = (*head_from)->value - now->value;
+			def = node->value - now->value;
 			*target = now;
 		}
 		now = now->next;
@@ -112,7 +112,7 @@ void	find_target_largest_smaller(t_box **head_from, t_box **head_to, t_box **tar
 	}
 }
 
-void	find_target_smallest_larger(t_box **head_from, t_box **head_to, t_box **target)
+void	find_target_smallest_larger(t_box *node, t_box **head_to, t_box **target)
 {
 	t_box	*now;
 	int		def;
@@ -121,8 +121,8 @@ void	find_target_smallest_larger(t_box **head_from, t_box **head_to, t_box **tar
 	t_box	*min_node;
 
 	now = *head_to;
-	max = (*head_from)->value;
-	min = (*head_from)->value;
+	max = node->value;
+	min = node->value;
 	def	= 2147483647;
 	*target = NULL;
 	while (1)
@@ -134,9 +134,9 @@ void	find_target_smallest_larger(t_box **head_from, t_box **head_to, t_box **tar
 			min = now->value;
 			min_node = now;
 		}
-		if (now->value > (*head_from)->value && now->value - (*head_from)->value < def)
+		if (now->value > node->value && now->value - node->value < def)
 		{
-			def = now->value - (*head_from)->value;
+			def = now->value - node->value;
 			*target = now;
 		}
 		now = now->next;
@@ -168,7 +168,7 @@ void	push_forward(t_box **head_a, t_box **head_b)
 		else
 		{
 			target = NULL;
-			find_target_largest_smaller(head_a, head_b, &target);
+			find_target_largest_smaller(*head_a, head_b, &target);
 			calc_cost(head_b, target, &prevcost, &nextcost);
 			while (target != *head_b)
 			{
@@ -190,7 +190,7 @@ void	push_back(t_box **head_a, t_box **head_b)
 
 	while (*head_b != NULL)
 	{
-		find_target_smallest_larger(head_b, head_a, &target);
+		find_target_smallest_larger(*head_b, head_a, &target);
 		calc_cost(head_a, target, &prevcost, &nextcost);
 		while (target != *head_a)
 		{
