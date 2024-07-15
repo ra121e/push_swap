@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 10:50:05 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/15 21:31:30 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/15 22:06:00 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,11 @@ int	calc_cost(t_box **head, t_box *node, int *prevcost, int *nextcost)
 }
 
 /**
- * @fn
+ * @fn t_box	*find_base(t_box **head_base, t_box **head_target)
+ * @brief find the lowest cost node in base stack
+ * @param[in] head_base head of the list from, basically stack_a
+ * @param[in] head_target head of the list to, basically stack_b
+ * @return base which is the lowest cost node to push out
  */
 
 t_box	*find_base(t_box **head_base, t_box **head_target)
@@ -83,7 +87,12 @@ t_box	*find_base(t_box **head_base, t_box **head_target)
 /**
  * @fn void	revolver(t_box **head_a, t_box **head_b, t_box *base, t_box *target)
  * @brief calculate the cost for base node and target node, rotate them efficiently
- *
+ * @param[in] head_a list of the base node
+ * @param[in] head_b list of the target node
+ * @param[in] base node the lowest cost to push out
+ * @param[in] target node the target to push the base node on
+ * @sa calc_cost, rb, rrb, ra, rra
+ * @note get cost to pick the node up to surface by 2 direction
  */
 
 void	revolver(t_box **head_a, t_box **head_b, t_box *base, t_box *target)
