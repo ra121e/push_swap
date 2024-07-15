@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 15:58:24 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/15 14:15:41 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/15 17:53:05 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,11 @@ void	pb(t_box **head_a, t_box **head_b);
 void	turk_algo(t_box **head_a, t_box **head_b);
 void	push_forward(t_box **head_a, t_box **head_b);
 void	push_back(t_box **head_a, t_box **head_b);
-void	find_target_largest_smaller(t_box *node, t_box **head_to, t_box **target);
+t_box	*find_target_largest_smaller(t_box *node, t_box **head_to);
 void	find_target_smallest_larger(t_box *node, t_box **head_to, t_box **target);
 void	three_case(t_box **head_a);
 void	two_case(t_box **head_a);
 int	calc_cost(t_box **head, t_box *node, int *prevcost, int *nextcost);
+t_box	*find_base(t_box **head_base, t_box **head_target);
 void	write_stack(t_box *head_a, t_box *head_b);
 #endif // PUSH_SWAP_H

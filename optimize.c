@@ -6,11 +6,21 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 10:50:05 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/15 10:57:04 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/15 17:55:12 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+/**
+ * @fn int	calc_cost()
+ * @brief calcurate how many steps to be the top of the list
+ * @param[in] head address of the head node of the list
+ * @param[in] node	to be calcurated
+ * @param[in,out] prevcost steps by the previous direction
+ * @param[in,out] nextcost steps by the next direction
+ * @return lower cost in prevcost or nextcost
+ */
 
 int	calc_cost(t_box **head, t_box *node, int *prevcost, int *nextcost)
 {
@@ -35,4 +45,42 @@ int	calc_cost(t_box **head, t_box *node, int *prevcost, int *nextcost)
 	if (cost > *nextcost)
 		cost = *nextcost;
 	return (cost);
+}
+
+/**
+ * @fn
+ */
+
+t_box	*find_base(t_box **head_base, t_box **head_target)
+{
+	t_box	*node;
+	t_box	*target;
+	t_box	*base;
+	int		prevcost;
+	int		nextcost;
+	int		cost_total_min;
+	int		cost_total;
+	int		cost_target;
+	int		cost_base;
+	int		i;
+
+	i = 0;
+	cost_total_min = 2147483647;
+	node = NULL;
+	node = *head_base;
+	while (cost_total_min > i)
+	{
+		target = find_target_largest_smaller(node, head_target);
+		cost_target = calc_cost(head_target, target, &prevcost, &nextcost);
+		cost_base = calc_cost(head_base, node, &prevcost, &nextcost);
+		cost_total = cost_target + cost_base;
+		if (cost_total < cost_total_min)
+		{
+			cost_total_min = cost_total;
+			base = node;
+		}
+		i++;
+		node = node->next;
+	}
+	return (base);
 }
