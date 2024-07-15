@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 18:22:20 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/12 13:37:05 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/15 20:38:14 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,29 +186,25 @@ void	ft_lstadd_back(t_box **lst, t_box *new)
 t_box	*ft_lstcut_front(t_box **lst)
 {
 	t_box	*box1;
-	t_box	*box2;
-	t_box	*last_box;
 
 	box1 = *lst;
 	if (box1 == NULL)
 		return(NULL);
-	box2 = box1->next;
-	if (box2 == NULL)
+	if (box1->next == NULL)
 		*lst = NULL;
 	else
 	{
-		last_box = box1->prev;
-		if (last_box == box2)
+		if (box1->prev == box1->next)
 		{
-			box2->next = NULL;
-			box2->prev = NULL;
+			(box1->next)->next = NULL;
+			(box1->next)->prev = NULL;
 		}
 		else
 		{
-			box2->prev = last_box;
-			last_box->next = box2;
+			(box1->next)->prev = (box1->prev);
+			(box1->prev)->next = (box1->next);
 		}
-		*lst = box2;
+		*lst = box1->next;
 	}
 	box1->next = NULL;
 	box1->prev = NULL;
