@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 10:50:05 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/15 21:01:57 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/15 21:31:30 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,33 +53,29 @@ int	calc_cost(t_box **head, t_box *node, int *prevcost, int *nextcost)
 
 t_box	*find_base(t_box **head_base, t_box **head_target)
 {
-	t_box	*node;
 	t_box	*target;
 	t_box	*base;
 	int		prevcost;
 	int		nextcost;
 	int		cost_total_min;
-	int		cost_total;
 	int		cost_target;
 	int		cost_base;
 	int		i;
 
 	i = 0;
 	cost_total_min = 2147483647;
-	node = *head_base;
 	while (cost_total_min > i)
 	{
-		target = find_target_largest_smaller(node, head_target);
+		target = find_target_largest_smaller((*head_base), head_target);
 		cost_target = calc_cost(head_target, target, &prevcost, &nextcost);
-		cost_base = calc_cost(head_base, node, &prevcost, &nextcost);
-		cost_total = cost_target + cost_base;
-		if (cost_total < cost_total_min)
+		cost_base = calc_cost(head_base, (*head_base), &prevcost, &nextcost);
+		if (cost_target + cost_base < cost_total_min)
 		{
-			cost_total_min = cost_total;
-			base = node;
+			cost_total_min = cost_target + cost_base ;
+			base = *head_base;
 		}
 		i++;
-		node = node->next;
+		*head_base = (*head_base)->next;
 	}
 	return (base);
 }
