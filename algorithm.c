@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 20:52:11 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/15 19:38:42 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/15 21:02:08 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,8 +157,8 @@ void	push_forward(t_box **head_a, t_box **head_b)
 	t_box	*last_box;
 	t_box	*target;
 	t_box	*base;
-	int		prevcost;
-	int		nextcost;
+//	int		prevcost;
+//	int		nextcost;
 
 	last_box = (*head_a)->prev;
 	while ((last_box->prev)->prev != *head_a)
@@ -174,22 +174,23 @@ void	push_forward(t_box **head_a, t_box **head_b)
 			target = NULL;
 			base = find_base(head_a, head_b);
 			target = find_target_largest_smaller(base, head_b);
-			calc_cost(head_b, target, &prevcost, &nextcost);
-			while (target != *head_b)
-			{
-				if (prevcost < nextcost)
-					rb(head_b);
-				else
-					rrb(head_b);
-			}
-			calc_cost(head_a, base, &prevcost, &nextcost);
-			while (base != *head_a)
-			{
-				if (prevcost < nextcost)
-					ra(head_a);
-				else
-					rra(head_a);
-			}
+			revolver(head_a, head_b, base, target);
+		//	calc_cost(head_b, target, &prevcost, &nextcost);
+		//	while (target != *head_b)
+		//	{
+		//		if (prevcost < nextcost)
+		//			rb(head_b);
+		//		else
+		//			rrb(head_b);
+		//	}
+		//	calc_cost(head_a, base, &prevcost, &nextcost);
+		//	while (base != *head_a)
+		//	{
+		//		if (prevcost < nextcost)
+		//			ra(head_a);
+		//		else
+		//			rra(head_a);
+		//	}
 			pa(head_a, head_b);
 			last_box = (*head_a)->prev;
 		}
@@ -226,7 +227,6 @@ void	turk_algo(t_box **head_a, t_box **head_b)
 	box1 = *head_a;
 	box2 = box1->next;
 	last_box = box1->prev;
-
 	if (*head_a == NULL || box2 == NULL)
 		return;
 	if (box2->next == box1)

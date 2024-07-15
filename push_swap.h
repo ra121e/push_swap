@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 15:58:24 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/15 18:00:17 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/15 21:01:49 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,6 @@ void	three_case(t_box **head_a);
 void	two_case(t_box **head_a);
 int	calc_cost(t_box **head, t_box *node, int *prevcost, int *nextcost);
 t_box	*find_base(t_box **head_base, t_box **head_target);
+void	revolver(t_box **head_a, t_box **head_b, t_box *base, t_box *target);
 void	write_stack(t_box *head_a, t_box *head_b);
 #endif // PUSH_SWAP_H

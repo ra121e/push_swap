@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 10:50:05 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/15 20:08:04 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/15 21:01:57 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,33 @@ t_box	*find_base(t_box **head_base, t_box **head_target)
 		node = node->next;
 	}
 	return (base);
+}
+
+/**
+ * @fn void	revolver(t_box **head_a, t_box **head_b, t_box *base, t_box *target)
+ * @brief calculate the cost for base node and target node, rotate them efficiently
+ *
+ */
+
+void	revolver(t_box **head_a, t_box **head_b, t_box *base, t_box *target)
+{
+	int	prevcost;
+	int	nextcost;
+
+	calc_cost(head_b, target, &prevcost, &nextcost);
+	while (target != *head_b)
+	{
+		if (prevcost < nextcost)
+			rb(head_b);
+		else
+			rrb(head_b);
+	}
+	calc_cost(head_a, base, &prevcost, &nextcost);
+	while (base != *head_a)
+	{
+		if (prevcost < nextcost)
+			ra(head_a);
+		else
+			rra(head_a);
+	}
 }
