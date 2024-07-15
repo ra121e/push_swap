@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 20:52:11 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/15 08:59:01 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/15 09:06:25 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,13 +195,6 @@ void	push_forward(t_box **head_a, t_box **head_b)
 			target = NULL;
 			find_target_b(head_a, head_b, &target);
 			calc_cost(head_b, target, &prevcost, &nextcost);
-//			if ((*head_a)->value == min)
-//			{
-//				while ((*head_b)->value != max)
-//					rb(head_b);
-//			}
-//			else
-//			{
 			while (target != *head_b)
 			{
 				if (prevcost < nextcost)
@@ -209,7 +202,6 @@ void	push_forward(t_box **head_a, t_box **head_b)
 				else
 					rrb(head_b);
 			}
-//			}
 			pa(head_a, head_b);
 		}
 	}
