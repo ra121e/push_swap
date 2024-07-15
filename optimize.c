@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 10:50:05 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/15 17:55:12 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/15 20:08:04 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ t_box	*find_base(t_box **head_base, t_box **head_target)
 
 	i = 0;
 	cost_total_min = 2147483647;
-	node = NULL;
 	node = *head_base;
 	while (cost_total_min > i)
 	{
