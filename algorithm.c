@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 20:52:11 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/15 17:54:15 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/15 18:01:40 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,19 +114,20 @@ t_box	*find_target_largest_smaller(t_box *node, t_box **head_to)
 	}
 }
 
-void	find_target_smallest_larger(t_box *node, t_box **head_to, t_box **target)
+t_box	*find_target_smallest_larger(t_box *node, t_box **head_to)
 {
 	t_box	*now;
 	int		def;
 	int		max;
 	int		min;
 	t_box	*min_node;
+	t_box	*target;
 
 	now = *head_to;
 	max = node->value;
 	min = node->value;
 	def	= 2147483647;
-	*target = NULL;
+	target = NULL;
 	while (1)
 	{
 		if (now->value > max)
@@ -139,14 +140,14 @@ void	find_target_smallest_larger(t_box *node, t_box **head_to, t_box **target)
 		if (now->value > node->value && now->value - node->value < def)
 		{
 			def = now->value - node->value;
-			*target = now;
+			target = now;
 		}
 		now = now->next;
 		if (now == *head_to)
 		{
-			if (*target == NULL)
-				*target = min_node;
-			break;
+			if (target == NULL)
+				target = min_node;
+			return(target);
 		}
 	}
 }
@@ -193,7 +194,7 @@ void	push_back(t_box **head_a, t_box **head_b)
 
 	while (*head_b != NULL)
 	{
-		find_target_smallest_larger(*head_b, head_a, &target);
+		target = find_target_smallest_larger(*head_b, head_a);
 		calc_cost(head_a, target, &prevcost, &nextcost);
 		while (target != *head_a)
 		{
