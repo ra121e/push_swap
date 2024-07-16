@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 15:58:24 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/15 21:01:49 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/16 10:20:26 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int		ft_atoi(const char *nptr);
 t_box	*ft_lstnew(int nbr);
 t_box	*ft_lstlast(t_box *lst);
 void	ft_lstadd_front(t_box **lst, t_box *new);
+void	ft_lstadd_back(t_box **lst, t_box *new);
 t_box	*ft_lstcut_front(t_box **lst);
 t_box	*make_list(t_box *head, char **nbrs);
 void	sa(t_box **head_a);
