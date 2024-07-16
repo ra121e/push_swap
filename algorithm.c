@@ -6,70 +6,11 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 20:52:11 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/16 00:32:41 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/16 09:47:42 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-/**
- * @fn void	two_case(t_box **head_a)
- * @brief 2 node in stack a
- * @param[in] head_a is stack a link list
- */
-
-void	two_case(t_box **head_a)
-{
-	t_box	*box1;
-	t_box	*box2;
-
-	box1 = *head_a;
-	box2 = box1->next;
-	if (box2->value < box1->value)
-	{
-		sa(head_a);
-	}
-	return;
-}
-
-/**
- * @fn void	three_case(t_box **head_a)
- * @brief sort 3 numbers
- * @param[in] head address of linked list
- * @return no
- * @note readable or norm
- */
-
-void	three_case(t_box **head_a)
-{
-	if ((*head_a)->value < ((*head_a)->next)->value &&
-		(*head_a)->value < ((*head_a)->prev)->value)
-	{
-		if (((*head_a)->next)->value > ((*head_a)->prev)->value)
-		{
-			sa(head_a);
-			ra(head_a);
-		}
-	}
-	else if((*head_a)->value > ((*head_a)->next)->value &&
-			(*head_a)->value > ((*head_a)->prev)->value)
-	{
-		if (((*head_a)->next)->value < ((*head_a)->prev)->value)
-			ra(head_a);
-		else
-		{
-			sa(head_a);
-			rra(head_a);
-		}
-	}
-	else
-	{
-		if (((*head_a)->next)->value < ((*head_a)->prev)->value)
-			sa(head_a);
-		else
-			rra(head_a);
-	}
-}
 
 t_box	*find_target_largest_smaller(t_box *node, t_box **head_to)
 {
