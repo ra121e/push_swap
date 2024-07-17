@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 18:38:00 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/14 12:30:35 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/17 21:04:09 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,26 +64,19 @@ void	write_stack(t_box *head_a, t_box *head_b)
 
 int	main(int argc, char *argv[])
 {
-	char	**nbrs;
 	t_box	*head_a;
 	t_box	*head_b;
 
-	nbrs = NULL;
 	head_a = NULL;
 	head_b = NULL;
 	if (argc == 1)
 		return (0);
-	if (argc > 2)
-	{
-		write(2, "Error\n", 6);
-		return (0);
-	}
 	if (argc == 2 && argv[1][0] != '\0')
-	{
-		nbrs = ft_split(argv[1], ' ');
-		head_a = make_list(head_a, nbrs);
-		turk_algo(&head_a, &head_b);
-		write_stack(head_a, head_b);
-	}
+		argv = ft_split(argv[1], ' ');
+	if (argc > 2)
+		argv++;
+	head_a = make_list(head_a, argv);
+	turk_algo(&head_a, &head_b);
+	write_stack(head_a, head_b);
 	return (0);
 }
