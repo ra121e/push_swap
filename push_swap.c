@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 18:38:00 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/17 21:04:09 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/18 10:23:00 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ int	main(int argc, char *argv[])
 		argv = ft_split(argv[1], ' ');
 	if (argc > 2)
 		argv++;
+	if (check_arg(argv))
+		return (0);
 	head_a = make_list(head_a, argv);
 	turk_algo(&head_a, &head_b);
 	write_stack(head_a, head_b);

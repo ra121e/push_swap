@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 15:58:24 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/16 10:20:26 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/18 10:39:42 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ size_t	ft_count_words(char const *str, char delimiter);
 void	ft_cleanmem(unsigned int i, char **word);
 int		ft_setstr(char const *s, char c, size_t nbr_words, char **word);
 char	**ft_split(char const *s, char c);
+int		check_digit(char **str, int *count);
+int		check_dup(int *nbrs);
+int		check_sort(int	*nbrs);
+int		check_arg(char **str);
 int		ft_isspace(char c);
 int		ft_isdigit(int c);
 int		ft_atoi(const char *nptr);
@@ -57,7 +61,7 @@ t_box	*find_target_largest_smaller(t_box *node, t_box **head_to);
 t_box	*find_target_smallest_larger(t_box *node, t_box **head_to);
 void	three_case(t_box **head_a);
 void	two_case(t_box **head_a);
-int	calc_cost(t_box **head, t_box *node, int *prevcost, int *nextcost);
+int		calc_cost(t_box **head, t_box *node, int *prevcost, int *nextcost);
 t_box	*find_base(t_box **head_base, t_box **head_target);
 void	revolver(t_box **head_a, t_box **head_b, t_box *base, t_box *target);
 void	write_stack(t_box *head_a, t_box *head_b);
