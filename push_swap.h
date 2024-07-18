@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 15:58:24 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/18 18:09:37 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/18 19:53:15 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,14 @@ size_t	ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+long	ft_atol(const char *nptr);
 size_t	ft_count_words(char const *str, char delimiter);
 void	ft_cleanmem(unsigned int i, char **word);
 int		ft_setstr(char const *s, char c, size_t nbr_words, char **word);
 char	**ft_split(char const *s, char c);
 int		check_digit(char **str, int *count);
-int		check_dup(int *nbrs);
-int		check_sort(int	*nbrs);
+int		check_dup(long *nbrs);
+int		check_sort(long	*nbrs);
 int		check_arg(char **str);
 int		ft_isspace(char c);
 int		ft_isdigit(int c);

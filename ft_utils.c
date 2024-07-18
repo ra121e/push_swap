@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 19:02:19 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/16 10:59:28 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/18 19:49:38 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,29 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	ft_memcpy(ptr, &s[start], len);
 	ptr[len] = '\0';
 	return (ptr);
+}
+
+long	ft_atol(const char *nptr)
+{
+	long	nbr;
+	int		sign;
+	int		i;
+
+	sign = 1;
+	nbr = 0;
+	i = 0;
+	while (ft_isspace(nptr[i]))
+		i++;
+	if (nptr[i] == '+' || nptr[i] == '-')
+	{
+		if (nptr[i] == '-')
+			sign = -1;
+		i++;
+	}
+	while (ft_isdigit(nptr[i]))
+	{
+		nbr = nbr * 10 + (nptr[i] - '0');
+		i++;
+	}
+	return (nbr * sign);
 }
