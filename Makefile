@@ -6,11 +6,13 @@
 #    By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/08 15:54:11 by athonda           #+#    #+#              #
-#    Updated: 2024/07/18 16:15:32 by athonda          ###   ########.fr        #
+#    Updated: 2024/07/18 21:20:20 by athonda          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	libpushswap.a
+NAME	=	push_swap
+
+LIB		=	libpushswap.a
 
 CFLAGS	=	-Wall -Wextra -Werror -g3 -O0
 
@@ -23,10 +25,10 @@ MAIN	=	push_swap.c
 
 OBJS	=	$(patsubst %.c,%.o,$(SRCS))
 
-all: $(NAME) $(MAIN)
-		cc $(CFLAGS) $(MAIN) $(NAME)
+all: $(LIB) $(MAIN)
+		cc $(CFLAGS) $(MAIN) $(LIB) -o $(NAME)
 
-$(NAME): $(OBJS)
+$(LIB): $(OBJS)
 		ar rsc $@ $?
 
 %.o: %.c push_swap.h
@@ -36,7 +38,7 @@ clean:
 		rm -f $(OBJS)
 
 fclean: clean
-		rm -f $(NAME) a.out push_swap.o
+		rm -f $(NAME) $(LIB)
 
 re: fclean all
 
