@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 20:52:11 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/16 09:47:42 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/18 16:18:31 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,21 +50,15 @@ t_box	*find_target_smallest_larger(t_box *node, t_box **head_to)
 {
 	t_box	*now;
 	int		def;
-	int		min;
 	t_box	*min_node;
 	t_box	*target;
 
 	now = *head_to;
-	min = node->value;
 	def	= 2147483647;
 	target = NULL;
+	min_node = ft_lstmin(head_to);
 	while (1)
 	{
-		if (now->value < min)
-		{
-			min = now->value;
-			min_node = now;
-		}
 		if (now->value > node->value && now->value - node->value < def)
 		{
 			def = now->value - node->value;

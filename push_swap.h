@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 15:58:24 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/18 10:39:42 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/18 16:16:16 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ t_box	*ft_lstlast(t_box *lst);
 void	ft_lstadd_front(t_box **lst, t_box *new);
 void	ft_lstadd_back(t_box **lst, t_box *new);
 t_box	*ft_lstcut_front(t_box **lst);
+t_box	*ft_lstmin(t_box **lst);
 t_box	*make_list(t_box *head, char **nbrs);
 void	sa(t_box **head_a);
 void	sb(t_box **head_b);
