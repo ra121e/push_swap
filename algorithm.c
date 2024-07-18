@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 20:52:11 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/18 16:18:31 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/18 16:51:31 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,15 @@ t_box	*find_target_largest_smaller(t_box *node, t_box **head_to)
 {
 	t_box	*now;
 	int		def;
-	int		max;
-	t_box	*max_node;
+	t_box	*node_max;
 	t_box	*target;
 
 	now = *head_to;
-	max = node->value;
 	def	= 2147483647;
 	target = NULL;
+	node_max = ft_lstmax(head_to);
 	while (1)
 	{
-		if (now->value > max)
-		{
-			max = now->value;
-			max_node = now;
-		}
 		if (now->value < node->value && (node->value - now->value) < def)
 		{
 			def = node->value - now->value;
@@ -40,7 +34,7 @@ t_box	*find_target_largest_smaller(t_box *node, t_box **head_to)
 		if (now == *head_to)
 		{
 			if (target == NULL)
-				target = max_node;
+				target = node_max;
 			return(target);
 		}
 	}
@@ -50,13 +44,13 @@ t_box	*find_target_smallest_larger(t_box *node, t_box **head_to)
 {
 	t_box	*now;
 	int		def;
-	t_box	*min_node;
+	t_box	*node_min;
 	t_box	*target;
 
 	now = *head_to;
 	def	= 2147483647;
 	target = NULL;
-	min_node = ft_lstmin(head_to);
+	node_min = ft_lstmin(head_to);
 	while (1)
 	{
 		if (now->value > node->value && now->value - node->value < def)
@@ -68,7 +62,7 @@ t_box	*find_target_smallest_larger(t_box *node, t_box **head_to)
 		if (now == *head_to)
 		{
 			if (target == NULL)
-				target = min_node;
+				target = node_min;
 			return(target);
 		}
 	}
