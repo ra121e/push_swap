@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 22:22:01 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/18 22:22:43 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/18 22:54:31 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,8 @@ void	push_forward(t_box **head_a, t_box **head_b)
 		if (*head_b == NULL || (*head_b)->next == NULL)
 		{
 			pb(head_a, head_b);
-			if ((*head_b)->next != NULL &&
-				 (*head_b)->value < ((*head_b)->next)->value)
+			if ((*head_b)->next != NULL && \
+				(*head_b)->value < ((*head_b)->next)->value)
 				sb(head_b);
 		}
 		else
