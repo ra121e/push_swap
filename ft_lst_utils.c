@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 10:15:08 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/16 10:44:17 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/18 22:28:59 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,7 @@ t_box	*ft_lstcut_front(t_box **lst)
 
 	box1 = *lst;
 	if (box1 == NULL)
-		return(NULL);
+		return (NULL);
 	if (box1->next == NULL)
 		*lst = NULL;
 	else

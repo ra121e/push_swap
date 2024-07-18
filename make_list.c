@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 18:22:20 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/16 10:19:27 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/18 22:29:59 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	ft_atoi(const char *nptr)
 
 t_box	*make_list(t_box *head_a, char **nbrs)
 {
-	int	nbr;
+	int		nbr;
 	t_box	*node;
 
 	head_a = NULL;

@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 09:35:02 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/18 11:28:56 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/18 22:26:43 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	two_case(t_box **head)
 	{
 		sa(head);
 	}
-	return;
+	return ;
 }
 
 /**
@@ -62,9 +62,9 @@ void	three_case(t_box **head)
 	if (box1->value > last_box->value)
 		rra(head);
 	else if (box2->value > last_box->value)
-		{
-			ra(head);
-			sa(head);
-			rra(head);
-		}
+	{
+		ra(head);
+		sa(head);
+		rra(head);
+	}
 }

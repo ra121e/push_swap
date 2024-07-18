@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 10:50:05 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/15 22:06:00 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/18 22:41:08 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ t_box	*find_base(t_box **head_base, t_box **head_target)
 
 /**
  * @fn void	revolver(t_box **head_a, t_box **head_b, t_box *base, t_box *target)
- * @brief calculate the cost for base node and target node, rotate them efficiently
+ * @brief calculate the cost for base and target node, rotate them efficiently
  * @param[in] head_a list of the base node
  * @param[in] head_b list of the target node
  * @param[in] base node the lowest cost to push out

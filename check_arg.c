@@ -6,12 +6,11 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 20:10:32 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/18 19:54:23 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/18 22:28:01 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 int	check_digit(char **str, int *count)
 {
@@ -29,14 +28,13 @@ int	check_digit(char **str, int *count)
 		if (str[i][j] != '\0')
 		{
 			write (2, "Error\n", 6);
-			return(1);
+			return (1);
 		}
 		i++;
 	}
 	*count = i;
 	return (0);
 }
-
 
 int	check_dup(long *nbrs)
 {

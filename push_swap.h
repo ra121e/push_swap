@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 15:58:24 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/18 19:53:15 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/18 22:46:39 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-typedef	struct s_box t_box;
+typedef struct s_box	t_box;
 struct s_box
 {
 	int		value;

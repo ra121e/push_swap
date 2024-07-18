@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 16:33:13 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/13 12:54:57 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/18 22:31:45 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	rra(t_box **head_a)
 	write(1, "rra\n", 4);
 	box1 = *head_a;
 	if (box1 == NULL || box1->next == NULL)
-		return;
+		return ;
 	last_box = box1->prev;
 	*head_a = last_box;
 }
@@ -33,7 +33,7 @@ void	rrb(t_box **head_b)
 	write(1, "rrb\n", 4);
 	box1 = *head_b;
 	if (box1 == NULL || box1->next == NULL)
-		return;
+		return ;
 	last_box = box1->prev;
 	*head_b = last_box;
 }
