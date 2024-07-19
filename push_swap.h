@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 15:58:24 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/19 15:39:12 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/19 19:01:10 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,12 @@ void	rrb(t_box **head_b);
 void	rrr(t_box **head_a, t_box **head_b);
 void	pa(t_box **head_a, t_box **head_b);
 void	pb(t_box **head_a, t_box **head_b);
+void	repeat_ra(t_box **head, int count);
+void	repeat_rb(t_box **head, int count);
+void	repeat_rr(t_box **head_a, t_box **head_b, int count);
+void	repeat_rra(t_box **head, int count);
+void	repeat_rrb(t_box **head, int count);
+void	repeat_rrr(t_box **head_a, t_box **head_b, int count);
 void	turk_algo(t_box **head_a, t_box **head_b);
 void	push_forward(t_box **head_a, t_box **head_b);
 void	push_back(t_box **head_a, t_box **head_b);
@@ -72,6 +78,11 @@ int		calc_cost(t_box **head, t_box *node, int *prevcost, int *nextcost);
 int		calc_cost_min(t_box **head, t_box *node);
 t_box	*find_base(t_box **head_base, t_box **head_target);
 void	revolver(t_box **head_a, t_box **head_b, t_box *base, t_box *target);
+void	revolver_prev(t_box **head_a, t_box **head_b, int prev_a, int prev_b);
+void	revolver_next(t_box **head_a, t_box **head_b, int next_a, int next_b);
+void	revolver_preva_nextb(t_box **head_a, t_box **head_b, int prev_a, int next_b);
+void	revolver_nexta_prevb(t_box **head_a, t_box **head_b, int next_a, int prev_b);
+void	revolver_fine(t_box **head_a, t_box **head_b, t_box *base, t_box *target);
 void	last_rotation(t_box **head);
 void	write_stack(t_box *head_a, t_box *head_b);
 #endif // PUSH_SWAP_H

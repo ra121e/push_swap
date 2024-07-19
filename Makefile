@@ -6,7 +6,7 @@
 #    By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/08 15:54:11 by athonda           #+#    #+#              #
-#    Updated: 2024/07/19 10:34:38 by athonda          ###   ########.fr        #
+#    Updated: 2024/07/19 19:08:45 by athonda          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,9 @@ CFLAGS	=	-Wall -Wextra -Werror -g3 -O0
 SRCS	=	ft_split.c ft_utils.c check_arg.c free.c \
 			make_list.c ft_lst_utils.c ft_lst_utils2.c \
 			op_swap.c op_rotate.c op_rev_rotate.c op_push.c \
-			algorithm.c turk_algo_utils.c optimize.c basic_sort.c \
-			display.c
+			op_repeat_rotate.c op_repeat_rev_rotate.c \
+			algorithm.c turk_algo_utils.c basic_sort.c \
+			optimize.c optimize2.c display.c
 
 MAIN	=	push_swap.c
 

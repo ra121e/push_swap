@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 16:31:52 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/18 22:32:05 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/19 19:34:47 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,18 @@ void	rb(t_box **head_b)
 
 void	rr(t_box **head_a, t_box **head_b)
 {
-	ra(head_a);
-	rb(head_b);
+	t_box	*box1;
+	t_box	*box2;
+
+	write(1, "rr\n", 3);
+	box1 = *head_a;
+	if (box1 == NULL || box1->next == NULL)
+		return ;
+	box2 = box1->next;
+	*head_a = box2;
+	box1 = *head_b;
+	if (box1 == NULL || box1->next == NULL)
+		return ;
+	box2 = box1->next;
+	*head_b = box2;
 }
