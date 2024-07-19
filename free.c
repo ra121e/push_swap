@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 09:29:35 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/19 12:13:41 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/19 13:33:02 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,12 @@ void	free_lst(t_box **head)
 
 	if (*head == NULL)
 		return ;
+	((*head)->prev)->next = NULL;
 	while (*head != NULL)
 	{
 		tmp = (*head)->next;
 		(*head)->value = 0;
 		free(*head);
-		*head = NULL;
 		*head = tmp;
 	}
 }
