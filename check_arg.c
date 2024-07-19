@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 20:10:32 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/19 14:18:46 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/20 00:47:02 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	check_dup(long *nbrs, int count, int argc, char **str)
 	while (i < count - 1)
 	{
 		j = i + 1;
-		while (nbrs[j])
+		while (j < count)
 		{
 			if (nbrs[i] == nbrs[j] || nbrs[i] > 2147483647)
 			{
