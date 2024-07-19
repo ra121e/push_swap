@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 10:50:05 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/19 21:20:23 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/19 22:48:40 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ t_box	*find_base(t_box **head_base, t_box **head_target)
 		{
 			cost_total_min = calc_cost_min(head_target, target) + \
 			calc_cost_min(head_base, now) ;
-			base = *head_base;
+			base = now;
 		}
 		i++;
 		now = now->next;

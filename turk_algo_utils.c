@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 22:22:01 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/19 21:20:56 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/19 22:51:00 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ void	push_forward(t_box **head_a, t_box **head_b)
 			pb(head_a, head_b);
 			last_box = (*head_a)->prev;
 		}
+//		write_stack(*head_a, *head_b);
 	}
 }
 

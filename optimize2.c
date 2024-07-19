@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 18:30:07 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/19 20:05:48 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/19 21:33:03 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,4 @@ void	revolver_fine(t_box **head_a, t_box **head_b, t_box *base, t_box *target)
 		else
 			revolver_nexta_prevb(head_a, head_b, next_a, prev_b);
 	}
-	write_stack(*head_a, *head_b);
 }
