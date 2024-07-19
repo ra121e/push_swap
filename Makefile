@@ -6,7 +6,7 @@
 #    By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/08 15:54:11 by athonda           #+#    #+#              #
-#    Updated: 2024/07/18 22:23:16 by athonda          ###   ########.fr        #
+#    Updated: 2024/07/19 10:34:38 by athonda          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,10 +16,11 @@ LIB		=	libpushswap.a
 
 CFLAGS	=	-Wall -Wextra -Werror -g3 -O0
 
-SRCS	=	ft_split.c ft_utils.c check_arg.c make_list.c \
-			ft_lst_utils.c ft_lst_utils2.c \
+SRCS	=	ft_split.c ft_utils.c check_arg.c free.c \
+			make_list.c ft_lst_utils.c ft_lst_utils2.c \
 			op_swap.c op_rotate.c op_rev_rotate.c op_push.c \
-			algorithm.c turk_algo_utils.c optimize.c basic_sort.c
+			algorithm.c turk_algo_utils.c optimize.c basic_sort.c \
+			display.c
 
 MAIN	=	push_swap.c
 
