@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 15:58:24 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/19 14:19:34 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/19 15:39:12 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ t_box	*find_target_smallest_larger(t_box *node, t_box **head_to);
 void	three_case(t_box **head_a);
 void	two_case(t_box **head_a);
 int		calc_cost(t_box **head, t_box *node, int *prevcost, int *nextcost);
+int		calc_cost_min(t_box **head, t_box *node);
 t_box	*find_base(t_box **head_base, t_box **head_target);
 void	revolver(t_box **head_a, t_box **head_b, t_box *base, t_box *target);
 void	last_rotation(t_box **head);

@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 10:50:05 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/18 22:41:08 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/19 15:38:26 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,41 @@ int	calc_cost(t_box **head, t_box *node, int *prevcost, int *nextcost)
 }
 
 /**
+ * @fn int	calc_cost_min()
+ * @brief calcurate how many steps to be the top of the list
+ * @param[in] head address of the head node of the list
+ * @param[in] node	to be calcurated
+ * @return lower cost in prevcost or nextcost
+ */
+
+int	calc_cost_min(t_box **head, t_box *node)
+{
+	int		cost;
+	t_box	*now;
+	int		prevcost;
+	int		nextcost;
+
+	now = node;
+	prevcost = 0;
+	nextcost = 0;
+	while (now != *head)
+	{
+		prevcost++;
+		now = now->prev;
+	}
+	cost = prevcost;
+	now = node;
+	while (now != *head)
+	{
+		nextcost++;
+		now = now->next;
+	}
+	if (cost > nextcost)
+		cost = nextcost;
+	return (cost);
+}
+
+/**
  * @fn t_box	*find_base(t_box **head_base, t_box **head_target)
  * @brief find the lowest cost node in base stack
  * @param[in] head_base head of the list from, basically stack_a
@@ -59,11 +94,7 @@ t_box	*find_base(t_box **head_base, t_box **head_target)
 {
 	t_box	*target;
 	t_box	*base;
-	int		prevcost;
-	int		nextcost;
 	int		cost_total_min;
-	int		cost_target;
-	int		cost_base;
 	int		i;
 
 	i = 0;
@@ -71,11 +102,11 @@ t_box	*find_base(t_box **head_base, t_box **head_target)
 	while (cost_total_min > i)
 	{
 		target = find_target_largest_smaller((*head_base), head_target);
-		cost_target = calc_cost(head_target, target, &prevcost, &nextcost);
-		cost_base = calc_cost(head_base, (*head_base), &prevcost, &nextcost);
-		if (cost_target + cost_base < cost_total_min)
+		if (calc_cost_min(head_target, target) + calc_cost_min(head_base, (*head_base)) < \
+			cost_total_min)
 		{
-			cost_total_min = cost_target + cost_base ;
+			cost_total_min = calc_cost_min(head_target, target) + \
+			calc_cost_min(head_base, (*head_base)) ;
 			base = *head_base;
 		}
 		i++;
