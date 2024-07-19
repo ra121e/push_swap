@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 20:10:32 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/19 12:36:41 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/19 13:58:40 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,8 @@ int	check_arg(char **str, int argc)
 	if (check_sort(tmp, count))
 	{
 		free_array_l(tmp);
-		free_split(str);
+		if (argc == 2)
+			free_split(str);
 		return (1);
 	}
 	free_array_l(tmp);
