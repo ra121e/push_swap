@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 20:10:32 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/19 13:58:40 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/19 14:18:46 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	check_digit(char **str, int *count, int argc)
 	return (0);
 }
 
-int	check_dup(long *nbrs, int count)
+int	check_dup(long *nbrs, int count, int argc, char **str)
 {
 	int	i;
 	int	j;
@@ -53,6 +53,8 @@ int	check_dup(long *nbrs, int count)
 			{
 				write (2, "Error\n", 6);
 				free_array_l(nbrs);
+				if (argc == 2)
+					free_split(str);
 				return (1);
 			}
 			j++;
@@ -62,7 +64,7 @@ int	check_dup(long *nbrs, int count)
 	return (0);
 }
 
-int	check_sort(long	*nbrs, int count)
+int	check_sort(long	*nbrs, int count, int argc, char **str)
 {
 	int	i;
 
@@ -73,6 +75,9 @@ int	check_sort(long	*nbrs, int count)
 			return (0);
 		i++;
 	}
+	free_array_l(nbrs);
+	if (argc == 2)
+		free_split(str);
 	return (1);
 }
 
@@ -95,19 +100,10 @@ int	check_arg(char **str, int argc)
 		i++;
 	}
 	tmp[i] = 0;
-	if (check_dup(tmp, count))
-	{
-		if (argc == 2)
-			free_split(str);
+	if (check_dup(tmp, count, argc, str))
 		return (1);
-	}
-	if (check_sort(tmp, count))
-	{
-		free_array_l(tmp);
-		if (argc == 2)
-			free_split(str);
+	if (check_sort(tmp, count, argc, str))
 		return (1);
-	}
 	free_array_l(tmp);
 	return (0);
 }
