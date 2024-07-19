@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 09:29:35 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/19 10:27:12 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/19 12:13:41 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,14 @@ void	free_split(char **str)
 	free(str);
 }
 
-void	free_array(long *nbrs)
+void	free_array_l(long *nbrs)
+{
+	if (nbrs == NULL)
+		return ;
+	free(nbrs);
+}
+
+void	free_array_i(int *nbrs)
 {
 	if (nbrs == NULL)
 		return ;
