@@ -1,14 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_test.c                                          :+:      :+:    :+:   */
+/*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/13 00:23:42 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/19 20:00:02 by athonda          ###   ########.fr       */
+/*   Created: 2024/07/18 23:54:07 by athonda           #+#    #+#             */
+/*   Updated: 2024/07/18 23:54:12 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "push_swap.h"
 #include <stdio.h>
@@ -48,34 +49,4 @@ void	write_stack(t_box *head_a, t_box *head_b)
 		}
 	}
 	printf("\n");
-}
-
-void	op_test(t_box **head_a, t_box **head_b)
-{
-	sa(&head_a);
-	write_stack(head_a, head_b);
-	ra(&head_a);
-	write_stack(head_a, head_b);
-	sa(&head_a);
-	write_stack(head_a, head_b);
-	rra(&head_a);
-	write_stack(head_a, head_b);
-	pa(&head_a, &head_b);
-	write_stack(head_a, head_b);
-	pa(&head_a, &head_b);
-	write_stack(head_a, head_b);
-	pa(&head_a, &head_b);
-	write_stack(head_a, head_b);
-	pa(&head_a, &head_b);
-	write_stack(head_a, head_b);
-	rra(&head_a);
-	write_stack(head_a, head_b);
-	rb(&head_b);
-	write_stack(head_a, head_b);
-	sb(&head_b);
-	write_stack(head_a, head_b);
-	pb(&head_b, &head_a);
-	write_stack(head_a, head_b);
-	rrb(&head_b);
-	write_stack(head_a, head_b);
 }

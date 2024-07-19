@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 20:52:11 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/19 19:24:16 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/19 21:20:15 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,5 @@ void	turk_algo(t_box **head_a, t_box **head_b)
 	three_case(head_a);
 	push_back(head_a, head_b);
 	last_rotation(head_a);
-	write_stack(*head_a, *head_b);
 	free_lst(head_a);
 }
