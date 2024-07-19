@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 10:50:05 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/19 15:38:26 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/19 17:43:39 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,8 @@ t_box	*find_base(t_box **head_base, t_box **head_target)
 	while (cost_total_min > i)
 	{
 		target = find_target_largest_smaller((*head_base), head_target);
-		if (calc_cost_min(head_target, target) + calc_cost_min(head_base, (*head_base)) < \
+		if (calc_cost_min(head_target, target) + \
+			calc_cost_min(head_base, (*head_base)) < \
 			cost_total_min)
 		{
 			cost_total_min = calc_cost_min(head_target, target) + \
