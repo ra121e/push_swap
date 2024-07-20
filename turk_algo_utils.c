@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 22:22:01 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/19 22:51:00 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/20 13:32:26 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,12 +89,10 @@ void	push_forward(t_box **head_a, t_box **head_b)
 			target = NULL;
 			base = find_base(head_a, head_b);
 			target = find_target_largest_smaller(base, head_b);
-//			revolver(head_a, head_b, base, target);
-			revolver_fine(head_a, head_b, base, target);
+			revolver(head_a, head_b, base, target);
 			pb(head_a, head_b);
 			last_box = (*head_a)->prev;
 		}
-//		write_stack(*head_a, *head_b);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 10:50:05 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/19 22:48:40 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/20 13:44:54 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ t_box	*find_base(t_box **head_base, t_box **head_target)
 			cost_total_min)
 		{
 			cost_total_min = calc_cost_min(head_target, target) + \
-			calc_cost_min(head_base, now) ;
+			calc_cost_min(head_base, now);
 			base = now;
 		}
 		i++;
@@ -129,7 +129,7 @@ t_box	*find_base(t_box **head_base, t_box **head_target)
  * @note get cost to pick the node up to surface by 2 direction
  */
 
-void	revolver(t_box **head_a, t_box **head_b, t_box *base, t_box *target)
+void	rev_single(t_box **head_a, t_box **head_b, t_box *base, t_box *target)
 {
 	int	prevcost;
 	int	nextcost;
