@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 15:58:24 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/20 13:36:59 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/20 14:01:05 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,4 @@ void	preva_nextb(t_box **head_a, t_box **head_b, int prev_a, int next_b);
 void	nexta_prevb(t_box **head_a, t_box **head_b, int next_a, int prev_b);
 void	rev_single(t_box **head_a, t_box **head_b, t_box *base, t_box *target);
 void	last_rotation(t_box **head);
-void	write_stack(t_box *head_a, t_box *head_b);
 #endif // PUSH_SWAP_H
