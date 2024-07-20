@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 10:50:05 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/20 13:44:54 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/20 15:39:42 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,12 +96,10 @@ t_box	*find_base(t_box **head_base, t_box **head_target)
 	t_box	*base;
 	t_box	*now;
 	int		cost_total_min;
-	int		i;
 
 	now = *head_base;
-	i = 0;
 	cost_total_min = 2147483647;
-	while (cost_total_min > i)
+	while (1)
 	{
 		target = find_target_largest_smaller(now, head_target);
 		if (calc_cost_min(head_target, target) + \
@@ -112,8 +110,9 @@ t_box	*find_base(t_box **head_base, t_box **head_target)
 			calc_cost_min(head_base, now);
 			base = now;
 		}
-		i++;
 		now = now->next;
+		if (now == *head_base)
+			return (base);
 	}
 	return (base);
 }
