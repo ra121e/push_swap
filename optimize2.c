@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 18:30:07 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/20 13:38:09 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/20 13:52:25 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	revolver(t_box **head_a, t_box **head_b, t_box *base, t_box *target)
 	int	prev_a;
 	int	next_a;
 	int	prev_b;
-	int next_b;
+	int	next_b;
 
 	calc_cost(head_b, target, &prev_b, &next_b);
 	calc_cost(head_a, base, &prev_a, &next_a);
