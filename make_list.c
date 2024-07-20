@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 18:22:20 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/19 12:27:32 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/20 18:53:08 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,11 @@ t_box	*make_list(t_box *head_a, char **nbrs)
 	{
 		nbr = ft_atoi(*nbrs);
 		node = ft_lstnew(nbr);
+		if (!node)
+		{
+			free_lst(&head_a);
+			return (0);
+		}
 		ft_lstadd_back(&head_a, node);
 		nbrs++;
 	}

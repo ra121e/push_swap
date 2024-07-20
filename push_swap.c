@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 18:38:00 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/19 19:23:34 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/20 18:49:46 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ int	main(int argc, char *argv[])
 	head_a = make_list(head_a, argv);
 	if (argc == 2)
 		free_split(argv);
+	if (!head_a)
+		return (0);
 	turk_algo(&head_a, &head_b);
 	return (0);
 }

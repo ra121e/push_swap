@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 20:52:11 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/19 21:20:15 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/20 18:51:34 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,13 @@ void	turk_algo(t_box **head_a, t_box **head_b)
 	if (box2->next == box1)
 	{
 		two_case(head_a);
+		free_lst(head_a);
 		return ;
 	}
 	else if (box2->next == last_box)
 	{
 		three_case(head_a);
+		free_lst(head_a);
 		return ;
 	}
 	push_forward(head_a, head_b);
