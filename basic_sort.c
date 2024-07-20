@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 09:35:02 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/18 22:26:43 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/20 10:49:44 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,23 +48,28 @@ void	two_case(t_box **head)
 
 void	three_case(t_box **head)
 {
-	t_box	*box1;
-	t_box	*box2;
-	t_box	*last_box;
+	t_box	*min;
+	t_box	*max;
 
-	box1 = *head;
-	box2 = box1->next;
-	last_box = box1->prev;
-	two_case(head);
-	box1 = *head;
-	box2 = box1->next;
-	last_box = box1->prev;
-	if (box1->value > last_box->value)
-		rra(head);
-	else if (box2->value > last_box->value)
+	min = ft_lstmin(head);
+	max = ft_lstmax(head);
+	if (*head == min && ((*head)->next) == max)
 	{
-		ra(head);
 		sa(head);
-		rra(head);
+		ra(head);
 	}
+	else if (*head == max)
+	{
+		if ((*head)->next == min)
+			ra(head);
+		else
+		{
+			sa(head);
+			rra(head);
+		}
+	}
+	else if (*head != min && (*head)->next == min)
+		sa(head);
+	else if (*head != min && (*head)->prev == min)
+		rra(head);
 }
