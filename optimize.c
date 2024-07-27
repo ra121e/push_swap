@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 10:50:05 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/20 15:39:42 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/27 12:18:50 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,25 +128,27 @@ t_box	*find_base(t_box **head_base, t_box **head_target)
  * @note get cost to pick the node up to surface by 2 direction
  */
 
-void	rev_single(t_box **head_a, t_box **head_b, t_box *base, t_box *target)
+void	revolver(t_box **head_a, t_box **head_b, t_box *base, t_box *target)
 {
-	int	prevcost;
-	int	nextcost;
+	int	prev_a;
+	int	next_a;
+	int	prev_b;
+	int	next_b;
 
-	calc_cost(head_b, target, &prevcost, &nextcost);
-	while (target != *head_b)
+	calc_cost(head_b, target, &prev_b, &next_b);
+	calc_cost(head_a, base, &prev_a, &next_a);
+	if (prev_a < next_a)
 	{
-		if (prevcost < nextcost)
-			rb(head_b);
+		if (prev_b - prev_a < next_b)
+			double_prev(head_a, head_b, prev_a, prev_b);
 		else
-			rrb(head_b);
+			preva_nextb(head_a, head_b, prev_a, next_b);
 	}
-	calc_cost(head_a, base, &prevcost, &nextcost);
-	while (base != *head_a)
+	else
 	{
-		if (prevcost < nextcost)
-			ra(head_a);
+		if (next_b - next_a < prev_b)
+			double_next(head_a, head_b, next_a, next_b);
 		else
-			rra(head_a);
+			nexta_prevb(head_a, head_b, next_a, prev_b);
 	}
 }

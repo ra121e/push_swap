@@ -6,7 +6,7 @@
 #    By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/08 15:54:11 by athonda           #+#    #+#              #
-#    Updated: 2024/07/20 14:14:07 by athonda          ###   ########.fr        #
+#    Updated: 2024/07/27 11:29:31 by athonda          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRCS	=	ft_split.c ft_utils.c check_arg.c free.c \
 			make_list.c ft_lst_utils.c ft_lst_utils2.c \
 			op_swap.c op_rotate.c op_rev_rotate.c op_push.c \
 			op_repeat_rotate.c op_repeat_rev_rotate.c \
-			algorithm.c turk_algo_utils.c basic_sort.c \
+			turk_algo.c turk_algo_utils.c basic_sort.c \
 			optimize.c optimize2.c
 
 MAIN	=	push_swap.c
