@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 15:58:24 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/20 14:01:05 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/29 11:24:00 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	repeat_rra(t_box **head, int count);
 void	repeat_rrb(t_box **head, int count);
 void	repeat_rrr(t_box **head_a, t_box **head_b, int count);
 void	turk_algo(t_box **head_a, t_box **head_b);
+void	push_cut_back(t_box **head_a, t_box **head_b);
 void	push_forward(t_box **head_a, t_box **head_b);
 void	push_back(t_box **head_a, t_box **head_b);
 t_box	*find_target_largest_smaller(t_box *node, t_box **head_to);
