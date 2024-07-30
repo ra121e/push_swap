@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 20:34:03 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/30 20:46:05 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/30 21:55:29 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	preprocess(t_box **head_a, t_box **head_b)
 			min = now->value;
 		now = now->next;
 		if (now == *head_a)
-			break;
+			break ;
 	}
 	divide_forward(head_a, head_b, min, max);
 }

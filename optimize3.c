@@ -6,13 +6,13 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 15:01:50 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/30 21:29:36 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/30 21:54:55 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	divide_push_a_r(t_box **head_a, t_box **head_b, int nbr, int quantile)
+int	divide_a_r(t_box **head_a, t_box **head_b, int nbr, int quantile)
 {
 	int	i;
 	int	nbr_push;
@@ -33,7 +33,7 @@ int	divide_push_a_r(t_box **head_a, t_box **head_b, int nbr, int quantile)
 	return (nbr_push);
 }
 
-int	divide_push_b_r(t_box **head_a, t_box **head_b, int nbr, int quantile)
+int	divide_b_r(t_box **head_a, t_box **head_b, int nbr, int quantile)
 {
 	int	i;
 	int	nbr_push;
@@ -54,7 +54,7 @@ int	divide_push_b_r(t_box **head_a, t_box **head_b, int nbr, int quantile)
 	return (nbr_push);
 }
 
-int	divide_push_b_rr(t_box **head_a, t_box **head_b, int nbr, int quantile)
+int	divide_b_rr(t_box **head_a, t_box **head_b, int nbr, int quantile)
 {
 	int	i;
 	int	nbr_push;
@@ -76,13 +76,12 @@ int	divide_push_b_rr(t_box **head_a, t_box **head_b, int nbr, int quantile)
 	return (nbr_push);
 }
 
-
 void	divide_forward(t_box **head_a, t_box **head_b, int min, int max)
 {
-	int	nbr_s;
-	int	nbr_m;
-	int	nbr_l;
-	int	nbr;
+	int		nbr_s;
+	int		nbr_m;
+	int		nbr_l;
+	int		nbr;
 	t_box	*now;
 
 	nbr = 0;
@@ -92,11 +91,11 @@ void	divide_forward(t_box **head_a, t_box **head_b, int min, int max)
 		nbr++;
 		now = now->next;
 		if (now == *head_a)
-			break;
+			break ;
 	}
-	nbr_s = divide_push_a_r(head_a, head_b, nbr, min + (max - min) / 3);
-	nbr_m = divide_push_a_r(head_a, head_b, nbr - nbr_s, max - (max - min) / 3);
-	nbr_l = divide_push_a_r(head_a, head_b, nbr - nbr_s - nbr_m, max);
+	nbr_s = divide_a_r(head_a, head_b, nbr, min + (max - min) / 3);
+	nbr_m = divide_a_r(head_a, head_b, nbr - nbr_s, max - (max - min) / 3);
+	nbr_l = divide_a_r(head_a, head_b, nbr - nbr_s - nbr_m, max);
 	divide_back(head_a, head_b, nbr_l, min + (max - min) * 8 / 9);
 	divide_back(head_a, head_b, nbr_m, min + (max - min) * 5 / 9);
 	divide_back(head_a, head_b, nbr_s, min + (max - min) * 2 / 9);
@@ -122,11 +121,11 @@ void	divide_back(t_box **head_a, t_box **head_b, int nbr, int q)
 		if (now == *head_b && *head_a != NULL)
 			now = (*head_a)->next;
 		else if (now == *head_b)
-			break;
+			break ;
 		if (now == *head_a)
-			break;
+			break ;
 	}
-	nb[0] = divide_push_b_r(head_a, head_b, nbr, q);
-	nb[1] = divide_push_b_rr(head_a, head_b, nbr - nb[0], q - (max -min) / 9);
-	divide_push_b_r(head_a, head_b, nbr - nb[0] - nb[1], q - (max - min) * 2 / 9);
+	nb[0] = divide_b_r(head_a, head_b, nbr, q);
+	nb[1] = divide_b_rr(head_a, head_b, nbr - nb[0], q - (max - min) / 9);
+	divide_b_r(head_a, head_b, nbr - nb[0] - nb[1], q - (max - min) * 2 / 9);
 }
