@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 15:43:53 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/31 15:49:57 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/31 18:47:00 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,11 @@ int	ft_stackmin(t_box **head_a, t_box **head_b)
 		if (now == *head_b && *head_a != NULL)
 			now = (*head_a)->next;
 		else if (now == *head_b)
-			return (min) ;
+			return (min);
 		if (now == *head_a)
-			return (min) ;
+			return (min);
 	}
 }
-
 
 int	ft_stackmax(t_box **head_a, t_box **head_b)
 {
@@ -49,8 +48,8 @@ int	ft_stackmax(t_box **head_a, t_box **head_b)
 		if (now == *head_b && *head_a != NULL)
 			now = (*head_a)->next;
 		else if (now == *head_b)
-			return (max) ;
+			return (max);
 		if (now == *head_a)
-			return (max) ;
+			return (max);
 	}
 }
