@@ -5,3 +5,4 @@ checker*
 result
 push_swap
 helper.c
+optimize_old.c
