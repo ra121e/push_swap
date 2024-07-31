@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 15:01:50 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/30 22:04:45 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/31 15:24:19 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,27 +78,24 @@ int	divide_b_rr(t_box **head_a, t_box **head_b, int nbr, int quantile)
 
 void	divide_forward(t_box **head_a, t_box **head_b, int min, int max)
 {
-	int		nbr_s;
-	int		nbr_m;
-	//int		nbr_l;
+	int		nb_f[DIVF];
 	int		nbr;
-	t_box	*now;
+	int		i;
 
-	nbr = 0;
-	now = *head_a;
-	while (1)
+	nbr = ft_lstsize(head_a);
+	i = 0;
+	while (i < DIVF - 1)
 	{
-		nbr++;
-		now = now->next;
-		if (now == *head_a)
-			break ;
+		nb_f[i] = divide_a_r(head_a, head_b, nbr, min + (max - min) * (i + 1) / DIVF);
+		nbr = nbr - nb_f[i];
+		i++;
 	}
-	nbr_s = divide_a_r(head_a, head_b, nbr, min + (max - min) / 3);
-	nbr_m = divide_a_r(head_a, head_b, nbr - nbr_s, max - (max - min) / 3);
-	//nbr_l = divide_a_r(head_a, head_b, nbr - nbr_s - nbr_m, max);
-	//divide_back(head_a, head_b, nbr_l, min + (max - min) * 8 / 9);
-	divide_back(head_a, head_b, nbr_m, min + (max - min) * 5 / 9);
-	divide_back(head_a, head_b, nbr_s, min + (max - min) * 2 / 9);
+	i = i - 1;
+	while (i >= 0)
+	{
+		divide_back(head_a, head_b, nb_f[i], min + (max - min) * ((DIVF * i) + 2) / (DIVF * DIVF));
+		i--;
+	}
 }
 
 void	divide_back(t_box **head_a, t_box **head_b, int nbr, int q)

@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 15:58:24 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/31 11:39:08 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/31 15:22:05 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define PUSH_SWAP_H
 # include <stdlib.h>
 # include <unistd.h>
+
+# define DIVF 3
+# define DIVB 3
 
 typedef struct s_box	t_box;
 struct s_box
