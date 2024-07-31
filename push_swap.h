@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 15:58:24 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/31 15:22:05 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/31 16:59:25 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ t_box	*ft_lstmax(t_box **lst);
 int		ft_lstsize(t_box **lst);
 int		ft_lstminvalue(t_box **lst);
 int		ft_lstmaxvalue(t_box **lst);
+int		ft_stackmin(t_box **head_a, t_box **head_b);
+int		ft_stackmax(t_box **head_a, t_box **head_b);
 t_box	*make_list(t_box *head, char **nbrs);
 void	sa(t_box **head_a);
 void	sb(t_box **head_b);
@@ -78,7 +80,7 @@ int		divide_a_r(t_box **head_a, t_box **head_b, int nbr, int quantile);
 int		divide_b_r(t_box **head_a, t_box **head_b, int nbr, int quantile);
 int		divide_b_rr(t_box **head_a, t_box **head_b, int nbr, int quantile);
 void	divide_back(t_box **head_a, t_box **head_b, int nbr, int q);
-void	divide_forward(t_box **head_a, t_box **head_b, int min, int max);
+void	divide_conquer(t_box **head_a, t_box **head_b, int min, int max);
 void	preprocess(t_box **head_a, t_box **head_b);
 void	push_forward(t_box **head_a, t_box **head_b);
 void	push_back(t_box **head_a, t_box **head_b);

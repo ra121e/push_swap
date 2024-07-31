@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 15:01:50 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/31 15:24:19 by athonda          ###   ########.fr       */
+/*   Updated: 2024/07/31 17:01:05 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	divide_b_rr(t_box **head_a, t_box **head_b, int nbr, int quantile)
 	return (nbr_push);
 }
 
-void	divide_forward(t_box **head_a, t_box **head_b, int min, int max)
+void	divide_conquer(t_box **head_a, t_box **head_b, int min, int max)
 {
 	int		nb_f[DIVF];
 	int		nbr;
@@ -93,36 +93,34 @@ void	divide_forward(t_box **head_a, t_box **head_b, int min, int max)
 	i = i - 1;
 	while (i >= 0)
 	{
-		divide_back(head_a, head_b, nb_f[i], min + (max - min) * ((DIVF * i) + 2) / (DIVF * DIVF));
+		divide_back(head_a, head_b, nb_f[i], i);
 		i--;
 	}
 }
 
 void	divide_back(t_box **head_a, t_box **head_b, int nbr, int q)
 {
-	int		nb[2];
+	int		nb[DIVB];
 	int		max;
 	int		min;
-	t_box	*now;
+	int		j;
 
-	now = *head_b;
-	min = now->value;
-	max = now->value;
-	while (1)
+	min = ft_stackmin(head_a, head_b);
+	max = ft_stackmax(head_a, head_b);
+	j = 0;
+	while (j < DIVB)
 	{
-		if (now->value > max)
-			max = now->value;
-		if (now->value < min)
-			min = now->value;
-		now = now->next;
-		if (now == *head_b && *head_a != NULL)
-			now = (*head_a)->next;
-		else if (now == *head_b)
-			break ;
-		if (now == *head_a)
-			break ;
+		if (j % 2 == 0)
+		{
+			nb[j] = divide_b_r(head_a, head_b, nbr, max - (max - min) * \
+					(((DIVF - q - 1) * DIVB) + j + 1) / (DIVF * DIVB));
+		}
+		else if (j % 2 == 1)
+		{
+			nb[j] = divide_b_rr(head_a, head_b, nbr, max - (max - min) * \
+					(((DIVF - q - 1) * DIVB) + j + 1) / (DIVF * DIVB));
+		}
+		nbr = nbr - nb[j];
+		j++;
 	}
-	nb[0] = divide_b_r(head_a, head_b, nbr, q);
-	nb[1] = divide_b_rr(head_a, head_b, nbr - nb[0], q - (max - min) / 9);
-	divide_b_r(head_a, head_b, nbr - nb[0] - nb[1], q - (max - min) * 2 / 9);
 }
