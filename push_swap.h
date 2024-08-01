@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 15:58:24 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/31 16:59:25 by athonda          ###   ########.fr       */
+/*   Updated: 2024/08/01 08:32:53 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 # define DIVF 3
 # define DIVB 3
+# define BLOCK_NUM_NO_MOVE 1
 
 typedef struct s_box	t_box;
 struct s_box

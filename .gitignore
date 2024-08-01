@@ -6,3 +6,4 @@ result
 push_swap
 helper.c
 optimize_old.c
+ps_test.sh

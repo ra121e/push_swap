@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 15:01:50 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/31 18:45:00 by athonda          ###   ########.fr       */
+/*   Updated: 2024/08/01 08:29:46 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	divide_conquer(t_box **head_a, t_box **head_b, int min, int max)
 
 	nbr = ft_lstsize(head_a);
 	i = 0;
-	while (i < DIVF - 1)
+	while (i < (DIVF - BLOCK_NUM_NO_MOVE))
 	{
 		nb_f[i] = divide_a_r(head_a, head_b, nbr, min + (max - min) * \
 				(i + 1) / DIVF);
