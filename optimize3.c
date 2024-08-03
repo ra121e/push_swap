@@ -6,13 +6,13 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 15:01:50 by athonda           #+#    #+#             */
-/*   Updated: 2024/08/01 08:29:46 by athonda          ###   ########.fr       */
+/*   Updated: 2024/08/02 22:29:34 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	divide_a_r(t_box **head_a, t_box **head_b, int nbr, int quantile)
+int	divide_a_r(t_box **head_a, t_box **head_b, int nbr, long long quantile)
 {
 	int	i;
 	int	nbr_push;
@@ -33,7 +33,7 @@ int	divide_a_r(t_box **head_a, t_box **head_b, int nbr, int quantile)
 	return (nbr_push);
 }
 
-int	divide_b_r(t_box **head_a, t_box **head_b, int nbr, int quantile)
+int	divide_b_r(t_box **head_a, t_box **head_b, int nbr, long long quantile)
 {
 	int	i;
 	int	nbr_push;
@@ -76,7 +76,7 @@ int	divide_b_rr(t_box **head_a, t_box **head_b, int nbr, int quantile)
 	return (nbr_push);
 }
 
-void	divide_conquer(t_box **head_a, t_box **head_b, int min, int max)
+void	divide_conquer(t_box **head_a, t_box **head_b, long long min, long long max)
 {
 	int		nb_f[DIVF];
 	int		nbr;
@@ -101,10 +101,10 @@ void	divide_conquer(t_box **head_a, t_box **head_b, int min, int max)
 
 void	divide_back(t_box **head_a, t_box **head_b, int nbr, int q)
 {
-	int		nb[DIVB];
-	int		max;
-	int		min;
-	int		j;
+	int				nb[DIVB];
+	long long		max;
+	long long		min;
+	int				j;
 
 	min = ft_stackmin(head_a, head_b);
 	max = ft_stackmax(head_a, head_b);

@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 22:22:01 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/20 13:32:26 by athonda          ###   ########.fr       */
+/*   Updated: 2024/08/02 16:22:36 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ t_box	*find_target_largest_smaller(t_box *node, t_box **head_to)
 
 t_box	*find_target_smallest_larger(t_box *node, t_box **head_to)
 {
-	t_box	*now;
-	int		def;
-	t_box	*node_min;
-	t_box	*target;
+	t_box		*now;
+	long long	def;
+	t_box		*node_min;
+	t_box		*target;
 
 	now = *head_to;
 	def = 2147483647;
@@ -53,9 +53,9 @@ t_box	*find_target_smallest_larger(t_box *node, t_box **head_to)
 	node_min = ft_lstmin(head_to);
 	while (1)
 	{
-		if (now->value > node->value && now->value - node->value < def)
+		if (now->value > node->value && (long long)now->value - (long long)node->value < def)
 		{
-			def = now->value - node->value;
+			def = (long long)now->value - (long long)node->value;
 			target = now;
 		}
 		now = now->next;
