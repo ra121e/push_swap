@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 20:34:03 by athonda           #+#    #+#             */
-/*   Updated: 2024/08/05 11:19:43 by athonda          ###   ########.fr       */
+/*   Updated: 2024/08/05 13:07:29 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	*sort_sample(t_box **head_a, int nbr, int *sample)
 void	preprocess(t_box **head_a, t_box **head_b)
 {
 	int		nbr;
-	int		quatile[(DIVF * DIVB) + 1];
+	int		quantile[(DIVF * DIVB) + 1];
 	int		i;
 	int		*sample;
 
@@ -54,11 +54,11 @@ void	preprocess(t_box **head_a, t_box **head_b)
 	i = 1;
 	while (i < (DIVF * DIVB))
 	{
-		quatile[i] = sample[SAMPLESIZE * i / (DIVF * DIVB)];
+		quantile[i] = sample[SAMPLESIZE * i / (DIVF * DIVB)];
 		i++;
 	}
-	quatile[0] = ft_lstminvalue(head_a);
-	quatile[i] = ft_lstmaxvalue(head_a);
+	quantile[0] = ft_lstminvalue(head_a);
+	quantile[i] = ft_lstmaxvalue(head_a);
 	free (sample);
-	divide_conquer(head_a, head_b, quatile);
+	divide_conquer(head_a, head_b, quantile);
 }
