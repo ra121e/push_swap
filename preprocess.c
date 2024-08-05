@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 20:34:03 by athonda           #+#    #+#             */
-/*   Updated: 2024/08/05 13:07:29 by athonda          ###   ########.fr       */
+/*   Updated: 2024/08/05 20:42:02 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ int	*sort_sample(t_box **head_a, int nbr, int *sample)
 
 void	preprocess(t_box **head_a, t_box **head_b)
 {
-	int		nbr;
-	int		quantile[(DIVF * DIVB) + 1];
-	int		i;
-	int		*sample;
+	int			nbr;
+	long long	quantile[(DIVF * DIVB) + 1];
+	int			i;
+	int			*sample;
 
 	nbr = ft_lstsize(head_a);
 	sample = (int *)malloc(sizeof (int) * (SAMPLESIZE + 1));
