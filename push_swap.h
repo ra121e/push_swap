@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 15:58:24 by athonda           #+#    #+#             */
-/*   Updated: 2024/08/02 22:30:10 by athonda          ###   ########.fr       */
+/*   Updated: 2024/08/05 12:10:41 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 # define PUSH_SWAP_H
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
 
 # define DIVF 3
 # define DIVB 3
 # define BLOCK_NUM_NO_MOVE 1
+# define SAMPLESIZE 50
 
 typedef struct s_box	t_box;
 struct s_box
@@ -80,8 +82,8 @@ void	turk_algo(t_box **head_a, t_box **head_b);
 int		divide_a_r(t_box **head_a, t_box **head_b, int nbr, long long quantile);
 int		divide_b_r(t_box **head_a, t_box **head_b, int nbr, long long quantile);
 int		divide_b_rr(t_box **head_a, t_box **head_b, int nbr, int quantile);
-void	divide_back(t_box **head_a, t_box **head_b, int nbr, int q);
-void	divide_conquer(t_box **head_a, t_box **head_b, long long min, long long max);
+void	divide_back(t_box **head_a, t_box **head_b, int nbr, int *quatile);
+void	divide_conquer(t_box **head_a, t_box **head_b, int *quatile);
 void	preprocess(t_box **head_a, t_box **head_b);
 void	push_forward(t_box **head_a, t_box **head_b);
 void	push_back(t_box **head_a, t_box **head_b);

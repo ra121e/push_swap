@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 15:01:50 by athonda           #+#    #+#             */
-/*   Updated: 2024/08/02 22:29:34 by athonda          ###   ########.fr       */
+/*   Updated: 2024/08/05 10:29:17 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	divide_b_rr(t_box **head_a, t_box **head_b, int nbr, int quantile)
 	return (nbr_push);
 }
 
-void	divide_conquer(t_box **head_a, t_box **head_b, long long min, long long max)
+void	divide_conquer(t_box **head_a, t_box **head_b, int *quatile)
 {
 	int		nb_f[DIVF];
 	int		nbr;
@@ -86,42 +86,36 @@ void	divide_conquer(t_box **head_a, t_box **head_b, long long min, long long max
 	i = 0;
 	while (i < (DIVF - BLOCK_NUM_NO_MOVE))
 	{
-		nb_f[i] = divide_a_r(head_a, head_b, nbr, min + (max - min) * \
-				(i + 1) / DIVF);
+		nb_f[i] = divide_a_r(head_a, head_b, nbr, quatile[(i + 1) * DIVB]);
 		nbr = nbr - nb_f[i];
 		i++;
 	}
 	i = i - 1;
 	while (i >= 0)
 	{
-		divide_back(head_a, head_b, nb_f[i], i);
+		divide_back(head_a, head_b, nb_f[i], &quatile[((i + 1) * (DIVB)) - 1]);
 		i--;
 	}
 }
 
-void	divide_back(t_box **head_a, t_box **head_b, int nbr, int q)
+void	divide_back(t_box **head_a, t_box **head_b, int nbr, int *quatile)
 {
-	int				nb[DIVB];
-	long long		max;
-	long long		min;
-	int				j;
+	int		nb[DIVB];
+	int		j;
 
-	min = ft_stackmin(head_a, head_b);
-	max = ft_stackmax(head_a, head_b);
 	j = 0;
 	while (j < DIVB)
 	{
 		if (j % 2 == 0)
 		{
-			nb[j] = divide_b_r(head_a, head_b, nbr, max - (max - min) * \
-					(((DIVF - q - 1) * DIVB) + j + 1) / (DIVF * DIVB));
+			nb[j] = divide_b_r(head_a, head_b, nbr, *quatile);
 		}
 		else if (j % 2 == 1)
 		{
-			nb[j] = divide_b_rr(head_a, head_b, nbr, max - (max - min) * \
-					(((DIVF - q - 1) * DIVB) + j + 1) / (DIVF * DIVB));
+			nb[j] = divide_b_rr(head_a, head_b, nbr, *quatile);
 		}
 		nbr = nbr - nb[j];
 		j++;
+		quatile--;
 	}
 }
