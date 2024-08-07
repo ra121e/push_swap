@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 15:58:24 by athonda           #+#    #+#             */
-/*   Updated: 2024/08/06 17:17:17 by athonda          ###   ########.fr       */
+/*   Updated: 2024/08/07 14:22:46 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,10 @@ void	repeat_rra(t_box **head, int count);
 void	repeat_rrb(t_box **head, int count);
 void	repeat_rrr(t_box **head_a, t_box **head_b, int count);
 void	turk_algo(t_box **head_a, t_box **head_b);
-int		divide_a_r(t_box **head_a, t_box **head_b, int nbr, long long quantile);
-int		divide_b_r(t_box **head_a, t_box **head_b, int nbr, long long *quantile);
-int		divide_b_rr(t_box **head_a, t_box **head_b, int nbr, long long *quantile);
-void	divide_back(t_box **head_a, t_box **head_b, int nbr, long long *quatile);
+int		divide_a_r(t_box **head_a, t_box **head_b, int nbr, long long q);
+int		divide_b_r(t_box **head_a, t_box **head_b, int nbr, long long *q);
+int		divide_b_rr(t_box **head_a, t_box **head_b, int nbr, long long *q);
+void	divide_back(t_box **head_a, t_box **head_b, int nbr, long long *q);
 void	divide_conquer(t_box **head_a, t_box **head_b, long long *quatile);
 void	preprocess(t_box **head_a, t_box **head_b);
 void	push_forward(t_box **head_a, t_box **head_b);

@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 10:50:05 by athonda           #+#    #+#             */
-/*   Updated: 2024/08/06 16:58:32 by athonda          ###   ########.fr       */
+/*   Updated: 2024/08/07 14:18:32 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	calc_cost(t_box **head, t_box *node, int *prevcost, int *nextcost)
  * @return lower cost in prevcost or nextcost
  */
 
-int	calc_cost_min(t_box **head, t_box *node)
+int	calc_min(t_box **head, t_box *node)
 {
 	int		cost;
 	t_box	*now;
@@ -104,7 +104,7 @@ t_box	*find_base(t_box **head_base, t_box **head_target)
 	while (1)
 	{
 		target = find_target_largest_smaller(now, head_target);
-		cost = calc_cost_min(head_target, target) + calc_cost_min(head_base, now);
+		cost = calc_min(head_target, target) + calc_min(head_base, now);
 		if (cost < cost_min || (cost == cost_min && now->value < base->value))
 		{
 			cost_min = cost;

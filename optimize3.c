@@ -6,13 +6,13 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 15:01:50 by athonda           #+#    #+#             */
-/*   Updated: 2024/08/05 22:03:47 by athonda          ###   ########.fr       */
+/*   Updated: 2024/08/07 14:22:53 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	divide_a_r(t_box **head_a, t_box **head_b, int nbr, long long quantile)
+int	divide_a_r(t_box **head_a, t_box **head_b, int nbr, long long q)
 {
 	int	i;
 	int	nbr_push;
@@ -21,7 +21,7 @@ int	divide_a_r(t_box **head_a, t_box **head_b, int nbr, long long quantile)
 	nbr_push = 0;
 	while (i < nbr)
 	{
-		if ((*head_a)->value <= quantile)
+		if ((*head_a)->value <= q)
 		{
 			pb(head_a, head_b);
 			nbr_push++;
@@ -33,18 +33,18 @@ int	divide_a_r(t_box **head_a, t_box **head_b, int nbr, long long quantile)
 	return (nbr_push);
 }
 
-int	divide_b_r(t_box **head_a, t_box **head_b, int nbr, long long *quantile)
+int	divide_b_r(t_box **head_a, t_box **head_b, int nbr, long long *q)
 {
 	int			i;
 	int			nbr_push;
 	long long	median_q;
 
-	median_q = (*quantile + *(quantile + 1)) / 2;
+	median_q = (*q + *(q + 1)) / 2;
 	i = 0;
 	nbr_push = 0;
 	while (i < nbr)
 	{
-		if ((*head_b)->value > *quantile)
+		if ((*head_b)->value > *q)
 		{
 			pa(head_b, head_a);
 			if ((*head_a)->value > median_q)
@@ -58,18 +58,18 @@ int	divide_b_r(t_box **head_a, t_box **head_b, int nbr, long long *quantile)
 	return (nbr_push);
 }
 
-int	divide_b_rr(t_box **head_a, t_box **head_b, int nbr, long long *quantile)
+int	divide_b_rr(t_box **head_a, t_box **head_b, int nbr, long long *q)
 {
 	int			i;
 	int			nbr_push;
 	long long	median_q;
 
-	median_q = (*quantile + *(quantile + 1)) / 2;
+	median_q = (*q + *(q + 1)) / 2;
 	i = 0;
 	nbr_push = 0;
 	while (i < nbr)
 	{
-		if ((*head_b)->value > *quantile)
+		if ((*head_b)->value > *q)
 		{
 			pa(head_b, head_a);
 			if ((*head_a)->value > median_q)
@@ -106,7 +106,7 @@ void	divide_conquer(t_box **head_a, t_box **head_b, long long *quatile)
 	}
 }
 
-void	divide_back(t_box **head_a, t_box **head_b, int nbr, long long *quatile)
+void	divide_back(t_box **head_a, t_box **head_b, int nbr, long long *q)
 {
 	int		nb[DIVB];
 	int		j;
@@ -116,14 +116,14 @@ void	divide_back(t_box **head_a, t_box **head_b, int nbr, long long *quatile)
 	{
 		if (j % 2 == 0)
 		{
-			nb[j] = divide_b_r(head_a, head_b, nbr, quatile);
+			nb[j] = divide_b_r(head_a, head_b, nbr, q);
 		}
 		else if (j % 2 == 1)
 		{
-			nb[j] = divide_b_rr(head_a, head_b, nbr, quatile);
+			nb[j] = divide_b_rr(head_a, head_b, nbr, q);
 		}
 		nbr = nbr - nb[j];
 		j++;
-		quatile--;
+		q--;
 	}
 }
