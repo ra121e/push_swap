@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 15:58:24 by athonda           #+#    #+#             */
-/*   Updated: 2024/08/07 14:22:46 by athonda          ###   ########.fr       */
+/*   Updated: 2024/08/07 17:30:36 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include <unistd.h>
 # include <limits.h>
 
-# define DIVF 3
-# define DIVB 2
+# define DIVF 2
+# define DIVB 3
 # define BLOCK_NUM_NO_MOVE 1
 # define SAMPLESIZE 100
 
