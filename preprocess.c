@@ -6,11 +6,25 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 20:34:03 by athonda           #+#    #+#             */
-/*   Updated: 2024/08/05 20:42:02 by athonda          ###   ########.fr       */
+/*   Updated: 2024/08/07 16:25:40 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file preprocess.c
+ * @brief select quantile to devide numbers
+ */
+
 #include "push_swap.h"
+
+/**
+ * @fn int	*sort_sample
+ * @brief sampling numbers and insertion sort in array
+ * @param[in] head_a population of the number data
+ * @param[in] nbr number of data
+ * @param[in, out] sample array of the sorted sample numbers
+ * @return sample array
+ */
 
 int	*sort_sample(t_box **head_a, int nbr, int *sample)
 {
@@ -38,6 +52,19 @@ int	*sort_sample(t_box **head_a, int nbr, int *sample)
 			return (sample);
 	}
 }
+
+/**
+ * @fn void preprocess
+ * @brief main process of preprocess
+ * @param[in] head_a
+ * @param[in] head_b
+ * @note
+	- get the total number of nodes
+	- prepare the array of storage
+	- sampling and insert sort the numbers into the array
+	- select quantile
+	- divide and conquer
+ */
 
 void	preprocess(t_box **head_a, t_box **head_b)
 {

@@ -6,11 +6,25 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 20:52:11 by athonda           #+#    #+#             */
-/*   Updated: 2024/08/05 01:53:15 by athonda          ###   ########.fr       */
+/*   Updated: 2024/08/07 15:20:41 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file turk_algo.c
+ * @brief main process of turk(greedy) sort
+ */
+
 #include "push_swap.h"
+
+/**
+ * @fn void turk_algo
+ * @brief basic process of turk sort
+ * @param[in] head_a linked list of numbers
+ * @param[in] head_b empty
+ * @attention freeeeeee!!! in two three case as well
+ * @note skipping push_forward must comes best score
+ */
 
 void	turk_algo(t_box **head_a, t_box **head_b)
 {
