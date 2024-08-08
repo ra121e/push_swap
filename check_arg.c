@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 20:10:32 by athonda           #+#    #+#             */
-/*   Updated: 2024/07/20 14:52:01 by athonda          ###   ########.fr       */
+/*   Updated: 2024/08/07 23:01:42 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	check_digit(char **str, int *count, int argc)
 			j++;
 		if (str[i][j] != '\0')
 		{
-			write (2, "Error\n", 6);
+			write (2, "Error", 6);
 			if (argc == 2)
 				free_split(str);
 			return (1);
